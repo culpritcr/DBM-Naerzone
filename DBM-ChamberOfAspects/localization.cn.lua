@@ -116,8 +116,7 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningSplitSoon	= "预警：分裂",
-	RangeFrame			= "范围监测器：12码"
+	WarningSplitSoon	= "预警：分裂"
 })
 
 -------------------------
@@ -127,10 +126,6 @@ L = DBM:GetModLocalization("Saviana")
 
 L:SetGeneralLocalization({
 	name = "塞维娅娜·怒火"
-})
-
-L:SetOptionLocalization({
-	RangeFrame			= "范围监测器：10码"
 })
 
 --------------------------
@@ -184,6 +179,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Halion					= "海里昂",
+	PhysicalRealm			= "物质世界",
 	MeteorCast				= "天空在燃烧！",
 	Phase2					= "暮光的世界将会让你痛不欲生！够胆量的就进来吧！",
 	Phase3					= "我就是交织的光影！凡人，在死亡之翼的使者面前颤抖吧！",

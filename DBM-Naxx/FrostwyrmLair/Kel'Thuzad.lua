@@ -4,7 +4,7 @@ local L		= mod:GetLocalizedStrings()
 local tContains = tContains
 local PickupInventoryItem, PutItemInBackpack, UseEquipmentSet, CancelUnitBuff = PickupInventoryItem, PutItemInBackpack, UseEquipmentSet, CancelUnitBuff
 
-mod:SetRevision(("$Revision: 4911 $"):sub(12, -3))
+mod:SetRevision("20220518110528")
 mod:SetCreatureID(15990)
 mod:SetModelID("creature/lich/lich.m2")
 mod:SetMinCombatTime(60)
@@ -23,7 +23,7 @@ mod:RegisterEventsInCombat(
 local warnAddsSoon			= mod:NewAnnounce("warnAddsSoon", 1, "Interface\\Icons\\INV_Misc_MonsterSpiderCarapace_01")
 local warnPhase2			= mod:NewPhaseAnnounce(2, 3)
 local warnBlastTargets		= mod:NewTargetAnnounce(27808, 2)
-local warnFissure			= mod:NewSpellAnnounce(27810, 4, nil, nil, nil, nil, nil, 2)
+local warnFissure			= mod:NewTargetNoFilterAnnounce(27810, 4)
 local warnMana				= mod:NewTargetAnnounce(27819, 2)
 local warnChainsTargets		= mod:NewTargetNoFilterAnnounce(28410, 4)
 local warnMindControlSoon 	= mod:NewSoonAnnounce(28410, 4)
@@ -32,12 +32,16 @@ local specwarnP2Soon		= mod:NewSpecialWarning("specwarnP2Soon")
 local specWarnManaBomb		= mod:NewSpecialWarningMoveAway(27819, nil, nil, nil, 1, 2)
 local specWarnManaBombNear	= mod:NewSpecialWarningClose(27819, nil, nil, nil, 1, 2)
 local specWarnBlast			= mod:NewSpecialWarningTarget(27808, "Healer", nil, nil, 1, 2)
+local specWarnFissureYou	= mod:NewSpecialWarningMove(27810, nil, nil, nil, 3, 2)
+local specWarnFissureNear	= mod:NewSpecialWarningClose(27810, nil, nil, nil, 1, 2)
+local yellFissure			= mod:NewYellMe(27810)
 local yellManaBomb			= mod:NewShortYell(27819)
 
-local blastTimer			= mod:NewBuffActiveTimer(4, 27808, nil, nil, nil, 5, nil, DBM_CORE_L.HEALER_ICON)
+local blastTimer			= mod:NewBuffActiveTimer(4, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 local timerManaBomb			= mod:NewCDTimer(20, 27819, nil, nil, nil, 3)--20-50
+local timerFissure			= mod:NewTargetTimer(5, 27810, nil, nil, 2, 3)
 local timerFissureCD  		= mod:NewCDTimer(14, 27810)
-local timerFrostBlast		= mod:NewCDTimer(30, 27808, nil, nil, nil, 3, nil, DBM_CORE_L.DEADLY_ICON)--40-46 (retail 40.1)
+local timerFrostBlast		= mod:NewCDTimer(30, 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)--40-46 (retail 40.1)
 local timerMC				= mod:NewBuffActiveTimer(20, 28410, nil, nil, nil, 3)
 local timerMCCD				= mod:NewCDTimer(90, 28410, nil, nil, nil, 3)--actually 60 second cdish but its easier to do it this way for the first one.
 local timerPhase2			= mod:NewTimer(227, "TimerPhase2", nil, nil, nil, 6)
@@ -45,7 +49,7 @@ local timerPhase2			= mod:NewTimer(227, "TimerPhase2", nil, nil, nil, 6)
 mod:AddSetIconOption("SetIconOnMC", 28410, true, false, {1, 2, 3})
 mod:AddSetIconOption("SetIconOnManaBomb", 27819, false, false, {8})
 mod:AddSetIconOption("SetIconOnFrostTomb", 28169, true, false, {1, 2, 3, 4, 5, 6, 7, 8})
-mod:AddRangeFrameOption(10, 27819)
+mod:AddRangeFrameOption(12, 27819)
 
 local RaidWarningFrame = RaidWarningFrame
 local GetFramesRegisteredForEvent, RaidNotice_AddMessage = GetFramesRegisteredForEvent, RaidNotice_AddMessage
@@ -154,7 +158,7 @@ local function StartPhase2(self)
 			end
 		end
 		if self.Options.RangeFrame then
-			DBM.RangeCheck:Show(10)
+			DBM.RangeCheck:Show(12)
 		end
 	end
 end
@@ -179,9 +183,24 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	local spellId = args.spellId
 	if spellId == 27810 then
-		warnFissure:Show()
-		warnFissure:Play("watchstep")
+		timerFissure:Start(args.destName)
 		timerFissureCD:Start()
+		if args:IsPlayer() then
+			specWarnFissureYou:Show()
+			specWarnFissureYou:Play("runout")
+			yellFissure:Yell()
+		else
+			local uId = DBM:GetRaidUnitId(args.destName)
+			if uId then
+				local inRange = CheckInteractDistance(uId, 2)
+				if inRange then
+					specWarnFissureNear:Show(args.destName)
+					specWarnFissureNear:Play("watchstep")
+				else
+					warnFissure:Show(args.destName)
+				end
+			end
+		end
 	elseif args.spellId == 28410 then
 		timerMCCD:Start()
 		DBM:Debug("MC on "..args.destName,2)
@@ -212,7 +231,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnManaBomb:Play("bombrun")
 			yellManaBomb:Yell()
 		elseif self:CheckNearby(12, args.destName) then
-			specWarnManaBombNear:Show()
+			specWarnManaBombNear:Show(args.destName)
 			specWarnManaBombNear:Play("scatter")
 		else
 			warnMana:Show(args.destName)

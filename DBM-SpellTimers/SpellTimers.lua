@@ -105,8 +105,8 @@ do
 		local createnewentry
 		local CurCount = 0
 		local panel = DBM_GUI:CreateNewPanel(L.TabCategory_SpellsUsed, "option")
-		local generalarea = panel:CreateArea(L.AreaGeneral, nil, 150, true)
-		local auraarea = panel:CreateArea(L.AreaAuras, nil, 20, true)
+		local generalarea = panel:CreateArea(L.AreaGeneral)
+		local auraarea = panel:CreateArea(L.AreaAuras)
 
 		local function regenerate()
 			-- FIXME here we can reuse the frames to save some memory (if the player deletes entries)
@@ -122,7 +122,7 @@ do
 			if #settings.spells == 0 then
 				createnewentry()
 			else
-				for i=1, #settings.spells, 1 do
+				for _, _ in pairs(settings.spells) do
 					createnewentry()
 				end
 			end
@@ -152,11 +152,12 @@ do
 			show_portal:SetScript("OnClick", function(self) settings.show_portal = not not self:GetChecked() end)
 
 			local resetbttn = area:CreateButton(L.Reset, 140, 20)
+			resetbttn.myheight = 0
 			resetbttn:SetPoint("TOPRIGHT", area.frame, "TOPRIGHT", -15, -15)
 			resetbttn:SetScript("OnClick", function(self)
 				table.wipe(DBM_SpellTimers_Settings)
 				addDefaultOptions(settings, default_settings)
-				for k,v in pairs(settings.spells) do
+				for _, v in pairs(settings.spells) do
 					if v.enabled == nil then
 						v.enabled = true
 					end
@@ -165,7 +166,7 @@ do
 				DBM_GUI_OptionsFrame:DisplayFrame(panel.frame)
 			end)
 
-			local version = area:CreateText("r"..Revision, nil, nil, GameFontDisableSmall, "RIGHT")
+			local version = area:CreateText("r"..Revision, nil, nil, GameFontDisableSmall, "RIGHT", 0)
 			version:SetPoint("BOTTOMRIGHT", area.frame, "BOTTOMRIGHT", -5, 5)
 		end
 		do
@@ -213,27 +214,31 @@ do
 
 			function createnewentry()
 				CurCount = CurCount + 1
-				local spellid = area:CreateEditBox(L.SpellID, "", 75)
+				local spellid = auraarea:CreateEditBox(L.SpellID, "", 65)
+				spellid.myheight = 35
 				spellid.guikey = CurCount
-				spellid:SetPoint("TOPLEFT", area.frame, "TOPLEFT", 40, 15-(CurCount*35))
+				spellid:SetPoint("TOPLEFT", auraarea.frame, "TOPLEFT", 40, 15 - (CurCount * 35))
 				spellid:SetScript("OnTextChanged", onchange_spell("spell"))
 				spellid:SetScript("OnShow", onshow_spell("spell"))
 				spellid:SetNumeric(true)
 
-				local bartext = area:CreateEditBox(L.BarText, "", 245)
+				local bartext = auraarea:CreateEditBox(L.BarText, "", 190)
+				bartext.myheight = 0
 				bartext.guikey = CurCount
 				bartext:SetPoint('TOPLEFT', spellid, "TOPRIGHT", 20, 0)
 				bartext:SetScript("OnTextChanged", onchange_spell("bartext"))
 				bartext:SetScript("OnShow", onshow_spell("bartext"))
 
-				local cooldown = area:CreateEditBox(L.Cooldown, "", 45)
+				local cooldown = auraarea:CreateEditBox(L.Cooldown, "", 45)
+				cooldown.myheight = 0
 				cooldown.guikey = CurCount
 				cooldown:SetPoint("TOPLEFT", bartext, "TOPRIGHT", 20, 0)
 				cooldown:SetScript("OnTextChanged", onchange_spell("cooldown"))
 				cooldown:SetScript("OnShow", onshow_spell("cooldown"))
 				cooldown:SetNumeric(true)
 
-				local enableit = area:CreateCheckButton("")
+				local enableit = auraarea:CreateCheckButton("")
+				enableit.myheight = 0
 				enableit.guikey = CurCount
 				enableit:SetScript("OnShow", onshow_spell("enabled"))
 				enableit:SetScript("OnClick", onchange_spell("enabled"))
@@ -244,7 +249,6 @@ do
 				area.frame:SetHeight( area.frame:GetHeight() + 35 )
 				area.frame:GetParent():SetHeight( area.frame:GetParent():GetHeight() + 35 )
 
-				panel:SetMyOwnHeight()
 				if DBM_GUI_OptionsFramePanelContainer.displayedFrame and CurCount > 1 then
 					DBM_GUI_OptionsFrame:DisplayFrame(panel.frame)
 				end
@@ -261,12 +265,11 @@ do
 			if #settings.spells == 0 then
 				createnewentry()
 			else
-				for i=1, #settings.spells, 1 do
+				for _ = 1, #settings.spells do
 					createnewentry()
 				end
 			end
 		end
-		panel:SetMyOwnHeight()
 	end
 	DBM:RegisterOnGuiLoadCallback(creategui, 19)
 end
@@ -284,7 +287,7 @@ do
 	end
 
 	function clearAllSpellBars()
-		for k,v in pairs(SpellBarIndex) do
+		for k, _ in pairs(SpellBarIndex) do
 			SpellBars:CancelBar(k)
 			SpellBarIndex[k] = nil
 		end
@@ -314,11 +317,11 @@ do
 			if settings.own_bargroup then
 				SpellBars = DBT:New()
 				print_t(SpellBars.options)
-				addDefaultOptions(SpellBars.options, DBM.Bars.options)
+				addDefaultOptions(SpellBars.options, DBT.Options)
 			else
-				SpellBars = DBM.Bars
+				SpellBars = DBT
 			end --]]
-			SpellBars = DBM.Bars
+			SpellBars = DBT
 
 
 			if UnitFactionGroup("player") == "Alliance" then
@@ -327,7 +330,7 @@ do
 				myportals = settings.portal_horde
 			end
 
-			for k,v in pairs(settings.spells) do
+			for _,v in pairs(settings.spells) do
 				if v.enabled == nil then
 					v.enabled = true
 				end
@@ -379,7 +382,7 @@ do
 
 			if settings.only_from_raid and not DBM:GetRaidUnitId(fromplayer) then return end
 
-			for k,v in pairs(myportals) do
+			for _, v in pairs(myportals) do
 				if v.spell == spellid then
 					local spellinfo, _, icon = GetSpellInfo(spellid)
 					local bartext = v.bartext:gsub("%%spell", spellinfo):gsub("%%player", fromplayer):gsub("%%target", toplayer)	-- Changed by Florin Patan

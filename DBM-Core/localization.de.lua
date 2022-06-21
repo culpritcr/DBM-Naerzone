@@ -153,7 +153,7 @@ L.VERSIONCHECK_HEADER		= "Boss Mod - Versionen"
 L.VERSIONCHECK_ENTRY			= "%s: %s (%s) %s"--One Boss mod
 L.VERSIONCHECK_ENTRY_TWO		= "%s: %s (%s) und %s (%s)"--Two Boss mods
 L.VERSIONCHECK_ENTRY_NO_DBM	= "%s: Kein Boss Mod installiert."
-L.VERSIONCHECK_FOOTER		= "%d Spieler mit DBM."
+L.VERSIONCHECK_FOOTER		= "%d Spieler mit DBM und %d Spieler mit BigWigs gefunden."
 L.VERSIONCHECK_OUTDATED		= "Folgende %d Spieler haben veraltete DBM Versionen: %s"
 L.YOUR_VERSION_OUTDATED      = "Deine Version von Deadly Boss Mods ist veraltet! Bitte besuche " .. L.UPDATEREMINDER_URL .." um die neueste Version herunterzuladen."
 L.VOICE_PACK_OUTDATED		= "Deinem ausgewählten DBM Sprachpack fehlen einige Sounds, die von von DBM unterstützt werden. Für einige Warnungssounds werden weiterhin die Standardsounds abgespielt. Bitte lade dir eine neuere Version des Spachpacks herunter oder kontaktiere den Autor des Sprachpacks für ein Update, welches die fehlenden Sounds enthält."
@@ -246,44 +246,6 @@ L.TIMER_USAGE	= {
 
 L.ERROR_NO_PERMISSION		= "Du hast nicht die benötigte Berechtigung für diesen Befehl!"
 
---Common Locals
-L.NEXT						= "Nächste %s"
-L.COOLDOWN					= "%s CD"
-L.UNKNOWN					= "unbekannt"
-L.LEFT						= "Links"
-L.RIGHT						= "Rechts"
-L.BOTH						= "Beide"
-L.BACK						= "Hinten"
-L.SIDE						= "Seite"
-L.TOP						= "Oben"
-L.BOTTOM					= "Unten"
-L.MIDDLE					= "Mitte"
-L.FRONT						= "Vorne"
-L.EAST						= "Osten"
-L.WEST						= "Westen"
-L.NORTH						= "Norden"
-L.SOUTH						= "Süden"
-L.INTERMISSION				= "Übergang"
-L.ORB						= "Kugel"
-L.CHEST						= "Kiste"
-L.NO_DEBUFF					= "Kein %s"
-L.ALLY						= "Verbündeten"
-L.ADD						= "Add"
-L.ADDS						= "Adds"
-L.ROOM_EDGE					= "Rand des Raums"
-L.FAR_AWAY					= "Weit weg"
-L.BREAK_LOS					= "Meide Sichtlinie"
-L.SAFE						= "Sicher"
-L.SHIELD					= "Schutzschild"
-L.INCOMING					= "%s kommt"
-L.BOSSTOGETHER				= "Bosses Together"
-L.BOSSAPART					= "Bosses Apart"
---Common Locals end
-
---Retail Globals
-L.RAID_INFO_WORLD_BOSS 		= "Weltboss"
---Retail Globals end
-
 L.BREAK_USAGE				= "Ein Pause-Timer kann nicht länger als 60 Minuten sein. Beachte bitte, dass für Pausen-Timer die Zeit in Minuten (und nicht in Sekunden) anzugeben ist."
 L.BREAK_START				= "Pause startet jetzt -- du hast %s! (gesendet von: %s)"
 L.BREAK_MIN					= "Pause endet in %s Minute(n)!"
@@ -311,7 +273,7 @@ L.AUTO_ANNOUNCE_TEXTS.spell		= "%s"
 L.AUTO_ANNOUNCE_TEXTS.ends 		= "%s ist beendet"
 L.AUTO_ANNOUNCE_TEXTS.endtarget	= "%s ist beendet: >%%s<"
 L.AUTO_ANNOUNCE_TEXTS.fades		= "%s ist beendet"
-L.AUTO_ANNOUNCE_TEXTS.adds		= "%s verbleibend: %%d"
+L.AUTO_ANNOUNCE_TEXTS.addsleft	= "%s verbleibend: %%d"
 L.AUTO_ANNOUNCE_TEXTS.cast		= "Wirkt %s: %.1f Sek"
 L.AUTO_ANNOUNCE_TEXTS.soon		= "%s bald"
 L.AUTO_ANNOUNCE_TEXTS.sooncount	= "%s (%%s) bald"
@@ -329,7 +291,7 @@ L.AUTO_ANNOUNCE_OPTIONS.spell		= "Zeige Warnung für $spell:%s"
 L.AUTO_ANNOUNCE_OPTIONS.ends		= "Zeige Warnung, wenn $spell:%s beendet ist"
 L.AUTO_ANNOUNCE_OPTIONS.endtarget	= "Zeige Warnung, wenn $spell:%s beendet ist"
 L.AUTO_ANNOUNCE_OPTIONS.fades		= "Zeige Warnung, wenn $spell:%s beendet ist"
-L.AUTO_ANNOUNCE_OPTIONS.adds		= "Verkünde die Anzahl der verbleibenden $spell:%s"
+L.AUTO_ANNOUNCE_OPTIONS.addsleft	= "Verkünde die Anzahl der verbleibenden $spell:%s"
 L.AUTO_ANNOUNCE_OPTIONS.cast		= "Zeige Warnung, wenn $spell:%s gewirkt wird"
 L.AUTO_ANNOUNCE_OPTIONS.soon		= prewarnOption
 L.AUTO_ANNOUNCE_OPTIONS.sooncount	= prewarnOption
@@ -461,8 +423,9 @@ L.AUTO_TIMER_OPTIONS.addscustom	= "Zeige Zeit bis Adds erscheinen (%ds)"
 L.AUTO_TIMER_OPTIONS.roleplay	= "Dauer des Rollenspiels anzeigen (%ds)"
 
 
-L.AUTO_ICONS_OPTION_TEXT			= "Setze Zeichen auf Ziele von $spell:%s"
-L.AUTO_ICONS_OPTION_TEXT2		= "Setze Zeichen auf $spell:%s"
+L.AUTO_ICONS_OPTION_TARGETS			= "Setze Zeichen auf Ziele von $spell:%s"
+L.AUTO_ICONS_OPTION_NPCS		= "Setze Zeichen auf $spell:%s"
+L.AUTO_ICONS_OPTION_CONFLICT		= " (Kann mit anderen Optionen kollidieren)"
 L.AUTO_ARROW_OPTION_TEXT			= "Zeige DBM-Pfeil zum Hingehen zum von $spell:%s betroffenen Ziel"
 L.AUTO_ARROW_OPTION_TEXT2		= "Zeige DBM-Pfeil zum Weggehen vom von $spell:%s betroffenen Ziel"
 L.AUTO_ARROW_OPTION_TEXT3		= "Zeige DBM-Pfeil zum Hingehen zum richtigen Ort für $spell:%s"
@@ -563,3 +526,18 @@ L.SILENTMODE_IS		= "Lautlos-Modus ist "
 L.LDB_LOAD_MODS		= "Lade Boss Mod"
 
 L.LDB_ENABLE_BOSS_MOD	= "Aktiviere Boss Mod"
+
+L.WORLD_BUFFS.hordeOny		= "Miembros de la Horda, ciudadanos de Orgrimmar, vengan y reúnanse para homenajear un hecho heroico" --needs translation
+L.WORLD_BUFFS.allianceOny	= "Bürger und Verbündete Stormwinds, am heutigen Tage ist Geschichte geschrieben worden."
+L.WORLD_BUFFS.hordeNef		= "NEFARIAN IS SLAIN! People of Orgrimmar"    --needs translation
+L.WORLD_BUFFS.allianceNef	= "Angehörige der Allianz, der Herrscher des Blackrocks wurde besiegt!"
+L.WORLD_BUFFS.zgHeart		= "Nun ist nur noch ein letzter Schritt nötig, um uns von der Bedrohung des Seelenschinders zu befreien"
+L.WORLD_BUFFS.zgHeartBooty	= "Der Blutgott, der Seelenschinder, wurde besiegt! Wir werden nicht länger unterdrückt!"
+L.WORLD_BUFFS.zgHeartYojamba= "Beginnt mit dem Ritual, meine Diener. Wir müssen das Herz von Hakkar wieder in das Nichts verbannen!"
+L.WORLD_BUFFS.rendHead		= "Rend Blackhand, der falsche Kriegshäuptling, ist gefallen!"
+
+--Retail Globals
+L.RAID_INFO_WORLD_BOSS 		= "Weltboss"
+L.SCENARIO_STAGE			= "Phase %d"
+-- EJ
+L.HARD_MODE					= "Schwerer Modus" -- 17220

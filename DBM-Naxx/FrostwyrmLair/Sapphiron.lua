@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Sapphiron", "DBM-Naxx", 5)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 2248 $"):sub(12, -3))
+mod:SetRevision("20220518110528")
 mod:SetCreatureID(15989)
 
 mod:RegisterCombat("combat")
@@ -27,10 +27,10 @@ local specWarnLowHP		= mod:NewSpecialWarning("SpecWarnSapphLow")
 local specWarnFrostrain	= mod:NewSpecialWarningMove(55699, nil, nil, nil, 1, 2)
 local yellIceBlock		= mod:NewYell(28522)
 
-local timerDrainLife	= mod:NewCDTimer(22, 28542, nil, nil, nil, 3, nil, DBM_CORE_L.CURSE_ICON)
+local timerDrainLife	= mod:NewCDTimer(24, 28542, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerAirPhase		= mod:NewTimer(66, "TimerAir", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
 local timerLanding		= mod:NewTimer(28.5, "TimerLanding", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
-local timerIceBlast		= mod:NewTimer(9.3, "TimerIceBlast", 15876, nil, nil, 2, DBM_CORE_L.DEADLY_ICON)
+local timerIceBlast		= mod:NewTimer(8, "TimerIceBlast", 15876, nil, nil, 2, DBM_COMMON_L.DEADLY_ICON)
 
 local berserkTimer		= mod:NewBerserkTimer(900)
 
@@ -46,19 +46,23 @@ local function resetIsFlying(self)
 end
 
 local function Landing(self)
-	warnAirPhaseSoon:Schedule(50)
 	warnLanded:Show()
+	warnDrainLifeSoon:Schedule(5)
+	timerDrainLife:Start(10.5)
+	warnAirPhaseSoon:Schedule(56)
 	timerAirPhase:Start()
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Hide()
 	end
-	self:Schedule(60, DBM.RangeCheck.Show, DBM.RangeCheck, 12)
+	self:Schedule(65, DBM.RangeCheck.Show, DBM.RangeCheck, 12)
 end
 
 function mod:OnCombatStart(delay)
 	noTargetTime = 0
 	warned_lowhp = false
 	self.vb.isFlying = false
+	warnDrainLifeSoon:Schedule(6.5 - delay)
+	timerDrainLife:Start(12 - delay)
 	warnAirPhaseSoon:Schedule(38.5 - delay)
 	timerAirPhase:Start(48.5 - delay)
 	self:Schedule(46 - delay, DBM.RangeCheck.Show, DBM.RangeCheck, 12)

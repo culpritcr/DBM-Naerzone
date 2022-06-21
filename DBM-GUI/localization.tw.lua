@@ -1,21 +1,21 @@
 if GetLocale() ~= "zhTW" then return end
-if not DBM_GUI_Translations then DBM_GUI_Translations = {} end
+if not DBM_GUI_L then DBM_GUI_L = {} end
 
-local L = DBM_GUI_Translations
+local L = DBM_GUI_L
 
 L.MainFrame	= "Deadly Boss Mods"
 
 L.TranslationByPrefix		= "向后移植 "
 L.TranslationBy 			= "Barsoom, Bunny67, Zidras"
-L.Website					= "拜訪討論/支援論壇:|cFF73C2FBhttps://discord.gg/CyVWDWS|r."
-L.WebsiteButton				= "GitHub"
+L.Website					= "拜訪討論/支援論壇:|cFF73C2FBhttps://discord.gg/dR5Szb9|r."
+L.WebsiteButton				= "論壇"
 
-L.OTabBosses	            = "模組"
-L.OTabRaids		            = "團隊"
-L.OTabDungeons	            = "隊伍/單獨"
-L.OTabPlugins	            = "核心插件"
-L.OTabOptions	            = "選項"
-L.OTabAbout		            = "關於"
+L.OTabBosses				= "模組"
+L.OTabRaids					= "團隊"
+L.OTabDungeons				= "隊伍/單獨"
+L.OTabPlugins				= "核心插件"
+L.OTabOptions				= "選項"
+L.OTabAbout					= "關於"
 
 L.TabCategory_OTHER			= "其它模組"
 
@@ -36,15 +36,12 @@ L.Mod_Reset					= "讀取預設值"
 L.Reset 					= "重置"
 L.Import					= "匯入"
 
-L.Enable  					= "啟用"
+L.Enable					= "啟用"
 L.Disable					= "停用"
 
 L.NoSound					= "靜音"
 
 L.IconsInUse				= "此模組已使用的標記"
-
-L.Large						= "大"
-L.Small						= "小"
 
 -- Tab: Boss Statistics
 L.BossStatistics			= "首領狀態"
@@ -59,18 +56,6 @@ L.TabCategory_Options	 	= "一般選項"
 L.Area_BasicSetup			= "初始DBM設置提示"
 L.Area_ModulesForYou		= "哪些DBM模組適合您？"
 L.Area_ProfilesSetup		= "DBM配置檔使用指南"
-
-L.EnableStatus				= "回復“status”密語"
-L.FixCLEUOnCombatStart		= "在拉/戰鬥結束和區域更改時清除戰鬥日誌緩存"
-
-L.PizzaTimer_Headline		= '創建一個計時條'
-L.PizzaTimer_Title			= '名稱（如“Pizza計時器”）'
-L.PizzaTimer_Hours			= "時"
-L.PizzaTimer_Mins			= "分"
-L.PizzaTimer_Secs			= "秒"
-L.PizzaTimer_ButtonStart	= "開始計時"
-L.PizzaTimer_BroadCast		= "向團隊廣播"
-
 -- Panel: Core & GUI
 L.Core_GUI 					= "核心 & 圖形界面"
 L.General 					= "一般DBM核心選項"
@@ -99,6 +84,13 @@ L.Button_ResetWindowSize	= "重設GUI視窗大小"
 L.Editbox_WindowWidth		= "GUI視窗寬度"
 L.Editbox_WindowHeight		= "GUI視窗高度"
 
+L.UIGroupingOptions			= "界面分組選項 (更改這些需要輸入 /reload 來重載界面)"
+L.GroupOptionsBySpell		= "按照技能分組 (只支持有效的模組)"
+L.GroupOptionsExcludeIcon	= "按照技能分組排除“設置標記圖示”選項 (它們將像以前一樣在“圖示”類中顯示)"
+L.AutoExpandSpellGroups		= "按照技能分組自動擴展選項"
+--L.ShowSpellDescWhenExpanded	= "分組擴展時繼續顯示技能描述"
+L.NoDescription				= "此技能無描述說明"
+
 -- Panel: Extra Features
 L.Panel_ExtraFeatures		= "額外功能"
 
@@ -114,11 +106,25 @@ L.SKT_Enabled				= "顯示目前戰鬥的最佳紀錄勝利計時器"
 L.ShowRespawn				= "顯示下一次首領重生計時器"
 L.ShowQueuePop				= "顯示接受彈出佇列的剩餘時間(尋求組隊、戰場..等)"
 --
-L.Area_AutoLogging			= "自動記錄選項"
-L.AutologBosses				= "自動使用暴雪戰鬥日誌記錄地城/團隊戰鬥"
-L.AdvancedAutologBosses		= "自動使用Transcriptor紀錄地城/團隊戰鬥"
-L.RecordOnlyBosses			= "只記錄首領的戰鬥 (排除所有小怪。請於首領開打前使用 /dbm pull 以獲取數據)"
-L.LogOnlyNonTrivial			= "只記錄重要內容 (普通或更難的當前內容團隊副本 & 傳奇+ 地下城)"
+--Auto Logging: Logging toggles/types
+L.Area_AutoLogging			= "自動記錄切換"
+L.AutologBosses				= "自動使用暴雪戰鬥日誌記錄所選內容"
+L.AdvancedAutologBosses		= "自動使用Transcriptor紀錄所選內容"
+--Auto Logging: Global filter Options
+L.Area_AutoLoggingFilters	= "自動記錄過濾"
+L.RecordOnlyBosses			= "不記錄小怪的戰鬥 (只記錄首領。請於首領開打前使用 /dbm pull 以獲取數據)"
+
+L.DoNotLogLFG				= "不記錄地城搜尋器或團隊搜尋器 (佇列的內容)"
+--Auto Logging: Recorded Content types
+L.Area_AutoLoggingContent	= "自動記錄內容"
+L.LogCurrentMythicRaids		= "當前等級傳奇團隊副本"--Retail Only
+L.LogCurrentRaids			= "當前等級團隊"
+L.LogTWRaids				= "時光漫遊 或 克羅米時光團隊副本"--Retail Only
+L.LogTrivialRaids			= "低等團隊副本 (低於角色等級)"
+L.LogCurrentMPlus			= "當前等級傳奇+地下城"--Retail Only
+L.LogCurrentMythicZero		= "當前等級傳奇0層地下城"--Retail Only
+L.LogTWDungeons				= "時光漫遊 或 克羅米時光地下城"--Retail Only
+L.LogCurrentHeroic			= "當前等級英雄地下城 (注意：如果您通過地城搜尋器佇列英雄並想要記錄，請關閉地城搜尋器過濾)"
 --
 L.Area_3rdParty				= "協力插件選項"
 L.oRA3AnnounceConsumables	= "在戰鬥開始時通告oRA3消耗品檢查"
@@ -128,10 +134,11 @@ L.AutoAcceptGuildInvite		= "自動接受來自公會成員的隊伍邀請"
 L.Area_Advanced				= "進階選項"
 L.FakeBW					= "假裝使用BigWigs版本檢查而不是用DBM版本(適合用在工會強制使用BigWigs時)"
 L.AITimer					= "DBM為從未遭遇的戰鬥使用內建的AI計時器來自動生成計時條(在初期Beta或PTR首次遭遇首領時之測試非常有幫助)。注意：這可能不能正確運作在有著相同技能的多重目標上。"
+L.FixCLEUOnCombatStart		= "在拉/戰鬥結束和區域更改時清除戰鬥日誌緩存"
 
 -- Panel: Profiles
 L.Panel_Profile				= "配置檔"
-L.Area_CreateProfile        = "建立核心選項配置檔"
+L.Area_CreateProfile		= "建立核心選項配置檔"
 L.EnterProfileName			= "輸入配置檔名稱"
 L.CreateProfile				= "建立預設設定值的新配置檔"
 L.Area_ApplyProfile			= "套用DBM核心選項配置檔"
@@ -149,12 +156,20 @@ L.ModAllStatReset			= "重置所有模組狀態"
 L.SelectModProfileCopy		= "複製所有設定"
 L.SelectModProfileCopySound	= "只複製音效設定"
 L.SelectModProfileCopyNote	= "只複製註記設定"
+L.SelectModProfileCurrent	= "當前老闆模組簡介"
 L.SelectModProfileDelete	= "刪除模組設定"
 
 L.Area_ImportExportProfile	= "匯入/匯出 設定檔"
 L.ImportExportInfo			= "匯入會覆寫您當前的設定檔，後果請自負。"
 L.ButtonImportProfile		= "匯入設定檔"
 L.ButtonExportProfile		= "匯出設定檔"
+L.ProfileExportTitle 		= "這是你目前的設定文字."
+L.ProfileExportSubtitle 	= "按下 CTRL-C 複製 DBM 的設定到你的剪貼簿"
+L.ProfileImportTitle 		= "將設定檔以文字格式貼在這."
+L.ProfileImportSubtitle 	= "按下 CTRL-V 貼上 DBM 的設定文字"
+
+L.ImportErrorOn				= "缺少設置中的自定義聲音: %s"
+L.ImportVoiceMissing		= "缺少語音包: %s"
 
 -- Tab: Alerts
 L.TabCategory_Alerts	 	= "警告"
@@ -188,15 +203,16 @@ L.MonochromeThickOutline	= "單色加粗描邊"
 L.RaidWarnSound				= "在團隊通告時播放音效"
 
 -- Panel: Spec Warn Frame
-L.Panel_SpecWarnFrame		= "特別警告"
-L.Area_SpecWarn				= "特別警告選項"
-L.SpecWarn_ClassColor		= "為特別警告套用職業顏色"
-L.ShowSWarningsInChat 		= "在聊天視窗中顯示特別警告"
-L.SWarnNameInNote			= "使用特別警告5選項如果自訂註記有包含你的名字"
-L.SpecialWarningIcon		= "在特別警告上顯示圖示"
+L.Panel_SpecWarnFrame		= "特別提示"
+L.Area_SpecWarn				= "特別提示選項"
+L.SpecWarn_ClassColor		= "為特別提示套用職業顏色"
+L.ShowSWarningsInChat 		= "在聊天視窗中顯示特別提示"
+L.SWarnNameInNote			= "使用特別提示5選項如果自訂註記有包含你的名字"
+L.SpecialWarningIcon		= "在特別提示上顯示圖示"
 L.ShortTextSpellname		= "使用簡短法術名稱文字(如果可用)"
 L.SpecWarn_FlashFrameRepeat	= "閃爍%d次"
 L.SpecWarn_Flash			= "閃爍螢幕"
+L.SpecWarn_Vibrate			= "震動控制器"
 L.SpecWarn_FlashRepeat		= "反覆閃爍"
 L.SpecWarn_FlashColor		= "閃爍顏色:%d"
 L.SpecWarn_FlashDur			= "閃爍長度:%0.1f"
@@ -204,11 +220,11 @@ L.SpecWarn_FlashAlpha		= "閃爍透明度:%0.1f"
 L.SpecWarn_DemoButton		= "顯示範例"
 L.SpecWarn_ResetMe			= "重置為預設值"
 L.SpecialWarnSoundOption	= "設置預設音效"
-L.SpecialWarnHeader1		= "類型1: 設置影響您或您的操作的普通優先級警告選擇"
-L.SpecialWarnHeader2		= "類型2: 設置影響每個人的一般優先級警告選擇"
-L.SpecialWarnHeader3		= "類型3: 設置高優先級警告的選擇"
-L.SpecialWarnHeader4		= "類型4: 設置高優先級運行特別警告的選擇"
-L.SpecialWarnHeader5		= "類型5: 設置警告選項，並在註釋中包含您的玩家名稱"
+L.SpecialWarnHeader1		= "類型1: 設置影響您或您的操作的普通優先級提示選擇"
+L.SpecialWarnHeader2		= "類型2: 設置影響每個人的一般優先級提示選擇"
+L.SpecialWarnHeader3		= "類型3: 設置高優先級提示的選擇"
+L.SpecialWarnHeader4		= "類型4: 設置高優先級運行特別提示的選擇"
+L.SpecialWarnHeader5		= "類型5: 設置提示選項，並在註釋中包含您的玩家名稱"
 
 -- Panel: Generalwarnings
 L.Tab_GeneralMessages 		= "聊天訊息"
@@ -227,6 +243,7 @@ L.Area_ChatAlerts			= "額外警告選項"
 L.RoleSpecAlert				= "當你加入團隊時拾取專精不符合你目前專精顯示警告訊息"
 L.CheckGear					= "開怪時顯示裝備警告訊息 (當你裝備的裝備等級低於包包裡40等以上或主手武器沒有裝備時顯示警告訊息)"
 L.WorldBossAlert			= "當你的公會成員或是朋友可能在你的伺服器上開戰世界首領時顯示警告訊息(如果發送者是被戰復的會不準確)"
+L.WorldBuffAlert			= "當你的伺服器的世界增益啟動時顯示警告訊息以及計時器"
 
 L.Area_BugAlerts			= "錯誤回報警報選項"
 L.BadTimerAlert				= "當DBM檢測到計時器錯誤且至少有1秒不正確時顯示聊天訊息"
@@ -238,17 +255,23 @@ L.Area_VoiceSelection		= "語音選擇"
 L.CountdownVoice			= "設置主要倒數計時語音"
 L.CountdownVoice2			= "設置次要倒數計時語音"
 L.CountdownVoice3			= "設置第三倒數計時語音"
+L.PullVoice					= "設置開怪計時器的語音"
 L.VoicePackChoice			= "設置語音警告的語音包"
+L.MissingVoicePack			= "缺少語音包 (%s)"
 L.Area_CountdownOptions		= "倒數選項"
-L.Area_VoicePackOptions		= "語音包選項(協力語音包)"
-L.SpecWarn_NoSoundsWVoice	= "設置何時撥放特別警告音效也使用語音警告..."
-L.SWFNever					= "絕不"
-L.SWFDefaultOnly			= "當特別警告使用預設音效。(允許自訂音效繼續撥放)"
-L.SWFAll					= "當特別警告使用所有音效"
-L.SpecWarn_AlwaysVoice		= "總是播放所有語音警告(即使已禁用特別警告，對團隊領隊是有用的，除此之外不建議使用)"
---TODO, maybe add URLS right to GUI panel on where to acquire 3rd party voice packs?
-L.Area_GetVEM				= "取得VEM語言包"
-L.VEMDownload				= "|cFF73C2FBhttps://www.curseforge.com/wow/addons/dbm-voicepack-vem|r"
+L.Area_VoicePackReplace		= "語音包替換選項 (選擇那些語音包要啟用、靜音以及替換)"
+L.VPReplaceNote				= "注意: 語音包永遠不會更改或刪除警告聲音。\n當替換語音包時，只是被簡單地靜音。"
+L.ReplacesAnnounce			= "替換提示聲音 (注意: 語音包除了階段轉換以及小怪外很少使用)"
+L.ReplacesSA1				= "替換特別提示 1 聲音 (個人的 'pvp拔旗')"
+L.ReplacesSA2				= "替換特別提示 2 聲音 (每個人 '當心')"
+L.ReplacesSA3				= "替換特別提示 3 聲音 (高優先級的 'airhorn')"
+L.ReplacesSA4				= "替換特別提示 4 聲音 (高優先級的 '快跑')"
+L.ReplacesCustom			= "替換特別提示 自定義使用者設置 (每個警告)(不建議)"
+L.Area_VoicePackAdvOptions	= "語音包進階選項"
+L.SpecWarn_AlwaysVoice		= "總是播放所有語音警告 (即使已禁用特別警告，對團隊領隊是有用的，除此之外不建議使用)"
+L.VPDontMuteSounds			= "當使用語音包時禁用常規警報的靜音 (只有當您希望在警報期間同時聽到兩者時才使用)"
+L.Area_VPLearnMore          = "了解更多關於語音包以及如何使用這些選項的訊息"
+L.VPLearnMore               = "|cFF73C2FBhttps://github.com/DeadlyBossMods/DBM-Retail/wiki/%5BGuide%5D-DBM-&-Voicepacks#2022-update|r"
 L.Area_BrowseOtherVP		= "在Curse上瀏覽其他語言包"
 L.BrowseOtherVPs			= "|cFF73C2FBhttps://www.curseforge.com/wow/addons/search?search=dbm+voice|r"
 L.Area_BrowseOtherCT		= "在Curse上瀏覽倒數包"
@@ -259,6 +282,7 @@ L.Panel_EventSounds				= "事件音效"
 L.Area_SoundSelection			= "音效選擇 (使用滑鼠滾輪捲動選單)"
 L.EventVictorySound				= "設定戰鬥勝利時的音效"
 L.EventWipeSound				= "設定滅團或重置時的音效"
+L.EventEngagePT					= "設定開怪倒數開始的音效"
 L.EventEngageSound				= "設定戰鬥開戰時的音效"
 L.EventDungeonMusic				= "設定在地城/團隊中播放的音樂"
 L.EventEngageMusic				= "設置戰鬥期間播放的音樂"
@@ -293,26 +317,27 @@ L.Slider_BarOffSetX 		= "X偏移:%d"
 L.Slider_BarOffSetY 		= "Y偏移:%d"
 L.Slider_BarWidth 			= "寬度:%d"
 L.Slider_BarScale 			= "尺寸:%0.2f"
+L.BarSaturation				= "小型計時條的飽和度 (當大計時條被停用時): %0.2f"
+
 --Types
-L.BarStartColorAdd			= "開始顏色(小怪)"
-L.BarEndColorAdd			= "結束顏色(小怪)"
-L.BarStartColorAOE			= "開始顏色(AOE)"
-L.BarEndColorAOE			= "結束顏色(AOE)"
-L.BarStartColorDebuff		= "開始顏色(點名技能)"
-L.BarEndColorDebuff			= "結束顏色(點名技能)"
-L.BarStartColorInterrupt	= "開始顏色(中斷)"
-L.BarEndColorInterrupt		= "結束顏色(中斷)"
-L.BarStartColorRole			= "開始顏色(角色)"
-L.BarEndColorRole			= "結束顏色(角色)"
-L.BarStartColorPhase		= "開始顏色(階段轉換)"
-L.BarEndColorPhase			= "結束顏色(階段轉換)"
-L.BarStartColorUI			= "開始顏色(自訂)"
-L.BarEndColorUI				= "結束顏色(自訂)"
+L.BarStartColorAdd			= "開始顏色\n(小怪)"
+L.BarEndColorAdd			= "結束顏色\n(小怪)"
+L.BarStartColorAOE			= "開始顏色\n(AOE)"
+L.BarEndColorAOE			= "結束顏色\n(AOE)"
+L.BarStartColorDebuff		= "開始顏色\n(點名技能)"
+L.BarEndColorDebuff			= "結束顏色\n(點名技能)"
+L.BarStartColorInterrupt	= "開始顏色\n(中斷)"
+L.BarEndColorInterrupt		= "結束顏色\n(中斷)"
+L.BarStartColorRole			= "開始顏色\n(角色)"
+L.BarEndColorRole			= "結束顏色\n(角色)"
+L.BarStartColorPhase		= "開始顏色\n(階段轉換)"
+L.BarEndColorPhase			= "結束顏色\n(階段轉換)"
+L.BarStartColorUI			= "開始顏色\n(自訂)"
+L.BarEndColorUI				= "結束顏色\n(自訂)"
 --Type 7 options
 L.Bar7Header				= "自訂計時條選項"
 L.Bar7ForceLarge			= "總是使用大計時條"
 L.Bar7CustomInline			= "使用自訂的'!'內嵌圖示"
-L.Bar7Footer				= "（虛擬欄不會實時更新）"
 --Dropdown Options
 L.CBTGeneric				= "一般"
 L.CBTAdd					= "小怪"
@@ -327,7 +352,6 @@ L.CVoiceTwo					= "倒數語音 2"
 L.CVoiceThree				= "倒數語音 3"
 
 -- Panel: Timers
-L.BarSetup					= "計時條樣式"
 L.Panel_Appearance	 		= "計時條外觀"
 L.Panel_Behavior	 		= "計時條動作"
 L.AreaTitle_BarSetup		= "計時條外觀選項"
@@ -347,6 +371,8 @@ L.BarSpark					= "計時條閃光"
 L.BarFlash					= "快結束時閃爍計時條"
 L.BarSort					= "依剩餘時間排序"
 L.BarColorByType			= "根據類型上色"
+L.Highest					= "頂部最高"
+L.Lowest					= "頂部最低"
 L.NoBarFade					= "使用開始/結束顏色作為小型/大型顏色，而不是逐漸改變顏色"
 L.BarInlineIcons			= "顯示嵌入圖示"
 L.ShortTimerText			= "使用較短的計時器文字(如果可用時)"
@@ -365,10 +391,23 @@ L.Panel_SpamFilter					= "DBM功能設置"
 L.Area_SpamFilter_Anounces			= "全局警告禁用及過濾選項"
 L.SpamBlockNoShowAnnounce			= "不顯示任何提示文字或播放警告音效"
 L.SpamBlockNoShowTgtAnnounce		= "不顯示目標的提示文字或播放警告音效 (上列選項會覆蓋此選項)"
-L.SpamBlockNoSpecWarnText			= "不顯示特別警告文字"
-L.SpamBlockNoSpecWarnFlash			= "不顯示特別警告螢幕閃爍"
-L.SpamBlockNoSpecWarnSound			= "不播放特別警告音效 (如果在“語音警告”面板中啟用了語音包，則仍允許語音包)"
-L.SpamBlockNoTrivialSpecWarnSound	= "如果相對你等級是不重要的內容則不要播放特別警告音效 (播放使用者選擇的標準警告音效替代)"
+L.SpamBlockNoTrivialSpecWarnSound	= "如果相對你等級是不重要的內容則不要播放特別提示音效 (播放使用者選擇的標準提示音效替代)"
+
+L.Area_SpamFilter_SpecRoleFilters	= "特別提示類型過濾（控制DBM要怎麼做）"
+L.SpamSpecRoleDispel				= "過濾 '驅散/偷取' 警報"
+L.SpamSpecRoleInterrupt				= "過濾 '打斷' 警報"
+L.SpamSpecRoleDefensive				= "過濾 '減傷' 警報"
+L.SpamSpecRoleTaunt					= "過濾 '嘲諷' 警報"
+L.SpamSpecRoleSoak					= "過濾 '吸收' 警報"
+L.SpamSpecRoleStack					= "過濾 '疊加層數' 警報"
+L.SpamSpecRoleSwitch				= "過濾 '切換目標''小怪' 警報"
+L.SpamSpecRoleGTFO					= "過濾 '地面有害技能' 警報"
+
+L.Area_SpamFilter_SpecFeatures		= "特別提示功能切換"
+L.SpamBlockNoSpecWarnText			= "不顯示特別提示文字"
+L.SpamBlockNoSpecWarnFlash			= "特別提示時不閃爍螢幕"
+L.SpamBlockNoSpecWarnVibrate		= "特別提示時不震動控制器"
+L.SpamBlockNoSpecWarnSound			= "不播放特別提示音效 (如果在“語音警告”面板中啟用了語音包，則仍允許語音包)"
 L.SpamBlockRaidWarning				= "過濾其他首領模組的警告"
 L.SpamBlockBossWhispers				= "當戰鬥時過濾 DBM 密語警告"
 
@@ -398,6 +437,7 @@ L.FilterVoidFormSay			= "在$spell:47241時不要發送圖示/倒數計時聊天
 L.Area_SpecFilter			= "角色職責過濾選項"
 L.FilterTankSpec			= "非坦克角色職責時過濾掉坦克專精的特定警告 (註:不建議玩家關閉此選項因大多數的坦克嘲諷警告都是預設開啟。)"
 L.FilterInterruptsHeader	= "過濾可中斷技能的警告基於以下行為偏好。"
+L.SWFNever					= "永不"
 L.FilterInterrupts			= "如果施法者不是你的目標/專注目標(總是)。"
 L.FilterInterrupts2			= "如果施法者不是你的目標/專注目標(總是)或中斷在冷卻中(只適用首領)"
 L.FilterInterrupts3			= "如果施法者不是你的目標/專注目標(總是)或中斷在冷卻中(首領&小怪)"
@@ -415,6 +455,7 @@ L.DontPlayPTCountdown		= "完全不要播放開怪/休息/開戰/自訂計時器
 L.PT_Threshold				= "不要播放高於%d秒以上的休息/開戰/自訂倒數計時器音效"
 
 L.Area_TimerTracker			= "TimerTracker 選項"
+L.PlayTT					= "启用 TimerTracker"
 L.PlayTTCountdown			= "播放 TimerTracker 倒計時聲音"
 L.PlayTTCountdownFinished	= "播放 TimerTracker 倒計時完成聲音"
 
@@ -473,3 +514,10 @@ L.FontShadow				= "陰影"
 L.FontType					= "選擇字型"
 
 L.FontHeight	= 18
+
+-- Retail Globals
+L.LARGE = "大"
+L.SMALL = "小"
+L.PLAYER_DIFFICULTY6 = "傳奇模式" -- ID: 24525
+L.PLAYER_DIFFICULTY_TIMEWALKER = "時光漫遊" -- ID: 25846
+L.SPECIALIZATION = "專精" -- ID: 22433

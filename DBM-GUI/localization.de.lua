@@ -1,20 +1,20 @@
 if GetLocale() ~= "deDE" then return end
-if not DBM_GUI_Translations then DBM_GUI_Translations = {} end
+if not DBM_GUI_L then DBM_GUI_L = {} end
 
-local L = DBM_GUI_Translations
+local L = DBM_GUI_L
 
 L.MainFrame = "Deadly Boss Mods"
 
 L.TranslationByPrefix		= "Retail backport von "
 L.TranslationBy 			= "Barsoom, Bunny67, Zidras"
-L.Website					= "Besuche uns auf Discord: |cFF73C2FBhttps://discord.gg/CyVWDWS|r."
-L.WebsiteButton				= "GitHub"
+L.Website					= "Besuche uns auf Discord: |cFF73C2FBhttps://discord.gg/dR5Szb9|r."
+L.WebsiteButton				= "Webseite"
 
 L.OTabBosses	= "Bosse"
 L.OTabOptions	= GAMEOPTIONS_MENU
 
 L.TabCategory_Options	 	= "Allgemeine Einstellungen"
-L.TabCategory_OTHER    		= "Sonstige Boss Mods"
+L.TabCategory_OTHER			= "Sonstige Boss Mods"
 
 L.BossModLoaded 			= "Statistiken von %s"
 L.BossModLoad_now 			= [[Dieses Boss Mod ist nicht geladen. Es wird automatisch geladen, wenn du die Instanz betrittst. Du kannst auch auf den Button klicken um das Boss Mod manuell zu laden.]]
@@ -32,15 +32,12 @@ L.Mod_Enabled				= "Aktiviere Boss Mod"
 L.Mod_Reset					= "Lade Standardeinstellungen"
 L.Reset 					= "Zurücksetzen"
 
-L.Enable  					= "Aktiviert"
+L.Enable					= "Aktiviert"
 L.Disable					= "Deaktiviert"
 
 L.NoSound					= "Kein Sound"
 
 L.IconsInUse				= "Zeichennutzung des Mods"
-
-L.Large						= "Groß"
-L.Small						= "Kleine"
 
 -- Tab: Boss Statistics
 L.BossStatistics			= "Boss Statistiken"
@@ -52,8 +49,6 @@ L.Statistic_BestRank		= "Höchste Stufe:"
 
 -- Tab: General Core Options
 L.General 					= "Allgemeine Grundeinstellungen"
-L.EnableStatus				= "Antworte auf 'status'-Flüsteranfragen"
-L.FixCLEUOnCombatStart		= "Lösche Kampflog bei Pull/Kampfende und Zonenwechsel"
 L.EnableMiniMapIcon			= "Aktiviere Minimap-Symbol"
 L.UseSoundChannel			= "Audiokanal um DBM-Sounddateien abzuspielen"
 L.UseMasterChannel			= "Master Audiokanal"
@@ -71,14 +66,6 @@ L.Button_RangeFrame			= "Zeige Abstandsfenster"
 L.Button_InfoFrame			= "Zeige Infofenster"
 L.Button_TestBars			= "Starte Testbalken"
 L.Button_ResetInfoRange		= "Info-/Abstandsfenster zurücksetzen"
-
-L.PizzaTimer_Headline		= 'Erstelle einen "Pizza-Timer"'
-L.PizzaTimer_Title			= 'Name (z.b. "Pizza!")'
-L.PizzaTimer_Hours			= "Stunden"
-L.PizzaTimer_Mins			= "Min"
-L.PizzaTimer_Secs			= "Sek"
-L.PizzaTimer_ButtonStart	= "Starte Timer"
-L.PizzaTimer_BroadCast		= "Anderen Schlachtzugspielern anzeigen"
 
 -- Tab: Raidwarning
 L.Tab_RaidWarning 			= "Schlachtzugwarnungen"
@@ -123,7 +110,6 @@ L.DisableStatusWhisper 		= "Deaktiviere 'status'-Flüsteranfragen für die gesam
 L.DisableGuildStatus 		= "Deaktiviere das Senden von Fortschrittsmeldungen an die Gilde für die gesamte Gruppe (nur als Gruppenleiter)"
 
 -- Tab: Barsetup
-L.BarSetup					= "Balkenstil"
 L.TabCategory_Timers		= "Balkeneinstellungen"
 L.BarTexture				= "Balkentextur"
 L.BarStyle					= "Balkenstil"
@@ -137,25 +123,24 @@ L.Slider_BarOffSetY 		= "Abstand Y: %d"
 L.Slider_BarWidth 			= "Breite: %d"
 L.Slider_BarScale 			= "Skalierung: %0.2f"
 --Types
-L.BarStartColorAdd			= "Startfarbe (Add)"
-L.BarEndColorAdd			= "Endfarbe (Add)"
-L.BarStartColorAOE			= "Startfarbe (AOE)"
-L.BarEndColorAOE			= "Endfarbe (AOE)"
-L.BarStartColorDebuff		= "Startfarbe (Anvisiert)"
-L.BarEndColorDebuff			= "Endfarbe (Anvisiert)"
-L.BarStartColorInterrupt	= "Startfarbe (Unterbrechung)"
-L.BarEndColorInterrupt		= "Endfarbe (Unterbrechung)"
-L.BarStartColorRole			= "Startfarbe (Rolle)"
-L.BarEndColorRole			= "Endfarbe (Rolle)"
-L.BarStartColorPhase		= "Startfarbe (Phase)"
-L.BarEndColorPhase			= "Endfarbe (Phase)"
-L.BarStartColorUI			= "Startfarbe (Nutzer)"
-L.BarEndColorUI				= "Endfarbe (Nutzer)"
+L.BarStartColorAdd			= "Startfarbe\n(Add)"
+L.BarEndColorAdd			= "Endfarbe\n(Add)"
+L.BarStartColorAOE			= "Startfarbe\n(AOE)"
+L.BarEndColorAOE			= "Endfarbe\n(AOE)"
+L.BarStartColorDebuff		= "Startfarbe\n(Anvisiert)"
+L.BarEndColorDebuff			= "Endfarbe\n(Anvisiert)"
+L.BarStartColorInterrupt	= "Startfarbe\n(Unterbrechung)"
+L.BarEndColorInterrupt		= "Endfarbe\n(Unterbrechung)"
+L.BarStartColorRole			= "Startfarbe\n(Rolle)"
+L.BarEndColorRole			= "Endfarbe\n(Rolle)"
+L.BarStartColorPhase		= "Startfarbe\n(Phase)"
+L.BarEndColorPhase			= "Endfarbe\n(Phase)"
+L.BarStartColorUI			= "Startfarbe\n(Nutzer)"
+L.BarEndColorUI				= "Endfarbe\n(Nutzer)"
 --Type 7 options
 L.Bar7Header				= "Einstellungen für Nutzerbalken"
 L.Bar7ForceLarge			= "Nutze immer großen Balken"
 L.Bar7CustomInline			= "Zeichen '!' einbetten"
-L.Bar7Footer				= "(Testbalken wird nicht live aktualisiert)"
 --Dropdown Options
 L.CBTGeneric				= "Generisch"
 L.CBTAdd					= "Add"
@@ -173,7 +158,7 @@ L.CVoiceThree				= "Stimmencountdown 3"
 L.AreaTitle_BarColors		= "Balkenfarben nach Timertyp"
 L.AreaTitle_BarSetup		= "Allgemeine Balkeneinstellungen"
 L.AreaTitle_Behavior		= "Optionen für das Balkenverhalten"
-L.AreaTitle_BarSetupSmall	= "Einstellungen für kleine Balken"
+L.AreaTitle_BarSetupSmall 	= "Einstellungen für kleine Balken"
 L.AreaTitle_BarSetupHuge	= "Einstellungen für große Balken"
 L.EnableHugeBar 			= "Aktiviere große Balken (Balken 2)"
 L.BarIconLeft 				= "Symbol links"
@@ -227,15 +212,9 @@ L.CountdownVoice2			= "Sekundäre Stimme für Zählungen"
 L.CountdownVoice3			= "Tertiäre Stimme für Zählungen"
 L.VoicePackChoice			= "Sprachpack für gesprochene Warnungen"
 L.Area_CountdownOptions		= "Countdown-Einstellungen"
-L.Area_VoicePackOptions		= "Sprachpack-Einstellungen (Drittanbieter)"
-L.SpecWarn_NoSoundsWVoice	= "Filtere Spezialwarnungssounds für Warnungen, für die eine Sprachausgabe verfügbar ist..."
 L.SWFNever					= "nicht filtern"
-L.SWFDefaultOnly			= "Spezialwarnungen eingestellt auf den Standardsound (spielt benutzerdefinierte Sounds)"
-L.SWFAll					= "Spezialwarnungen eingestellt auf irgendeinen Sound"
 L.SpecWarn_AlwaysVoice		= "Spiele immer alle gesprochenen Warnungen (ignoriert Boss-spezifische Einstellung, nützlich für Schlachtzugsleiter)"
 
-L.Area_GetVEM				= "Hole VEM Sprachpack"
---L.VEMDownload
 L.Area_BrowseOtherVP		= "Suche andere Sprachpacks auf Curse"
 --L.BrowseOtherVPs
 L.Area_BrowseOtherCT		= "Suche Countdownpacks auf Curse"
@@ -268,7 +247,6 @@ L.Panel_SpamFilter			= "Deaktivierung von DBM-Funktionen"
 L.Area_SpamFilter_Anounces	= "Announce Global Disable & Filter Options"
 L.SpamBlockNoShowAnnounce	= "Zeige keinen Text und spiele keine Sounds für JEGLICHE allgemeine Meldungen"
 L.SpamBlockNoShowTgtAnnounce= "Zeige keinen Text und spiele keine Sounds für allgemeine ZIEL-Meldungen (wird durch obigen Filter überschrieben)"
-L.SpamBlockNoSpecWarn		= "Zeige keine Spezialwarnungen und spiele keine Spezialwarnungstöne ab"
 L.SpamBlockNoSpecWarnText	= "Zeige keinen Spezialwarnungstext, aber erlaube dennoch Sprachpacks (wird durch obigen Filter überschrieben)"
 
 L.Area_SpamFilter_Timers	= "Timer Global Disable & Filter Options"
@@ -284,7 +262,6 @@ L.SpamBlockNoHudMap			= "Zeige keine HudMap"
 L.SpamBlockNoNameplate		= "Zeige keine Namensplakettenauras"
 L.SpamBlockNoYells			= "Sende keine automatischen Schreie"
 L.SpamBlockNoNoteSync		= "Akzeptiere keine geteilten Notizen"
-L.SpamBlockNoReminders		= "Zeige keine Loginnachrichten, Empfehlungsmeldungen, fehlende Änderungsmeldungen oder Aktualisierungsmeldungen an"
 
 L.Area_Restore				= "DBM-Wiederherstellungseinstellungen (Setzen des vorherigen Nutzerzustands nach Mod-Ende)"
 L.SpamBlockNoIconRestore	= "Setze Markierungszeichen am Kampfende nicht auf den vorherigen Zustand zurück"
@@ -315,6 +292,7 @@ L.DontShowPTCountdownText	= "Zeige keinen optischen Countdown für Pull-Timer"
 L.PT_Threshold				= "Zeige keinen opt. Countd. für Pausen-/Kampf-/Nutzer-Timer über: %d"
 
 L.Area_TimerTracker			= "TimerTracker-Optionen"
+L.PlayTT					= "Aktiviere TimerTracker"
 L.PlayTTCountdown			= "TimerTracker-akustischen Countdown abspielen"
 L.PlayTTCountdownFinished	= "TimerTracker Countdown beendet akustischen abspielen"
 
@@ -370,6 +348,7 @@ L.AutoAcceptGuildInvite		= "Automatisch Gruppeneinladungen von Gildenmitgliedern
 L.Area_Advanced				= "Erweiterte Einstellungen"
 L.FakeBW					= "Bei Versionsprüfungen als \"BigWigs\" ausgeben, statt als DBM (nützlich für Gilden, die die Nutzung von \"BigWigs\" erzwingen)"
 L.AITimer					= "Erzeuge automatisch Timer für unbekannte Kämpfe mit der in DBM eingebauten Timer-KI (nützlich beim erstmaligen Pullen eines Test-Bosses, etwa auf Beta- oder PTR-Servern) Hinweis: Dies funktioniert nicht richtig bei mehreren Gegnern mit derselben Fähigkeit."
+L.FixCLEUOnCombatStart		= "Lösche Kampflog bei Pull/Kampfende und Zonenwechsel"
 
 L.Panel_Profile				= "Profile"
 L.Area_CreateProfile		= "Profilerzeugung für DBM Core Einstellungen"
@@ -390,7 +369,17 @@ L.ModAllStatReset			= "Alle Statistiken zurücksetzen"
 L.SelectModProfileCopy		= "Kopiere alle Einstellungen von"
 L.SelectModProfileCopySound	= "Kopiere nur Soundeinst. von"
 L.SelectModProfileCopyNote	= "Kopiere nur Notizen von"
+L.SelectModProfileCurrent	= "Aktuelles Boss Mod-Profil"
 L.SelectModProfileDelete	= "Lösche Mod-Einstellungen für"
+
+L.Area_ImportExportProfile	= "Profile Importieren/Exportieren"
+-- L.ImportExportInfo			= "Importing will overwrite your current profile, do at your own risk."
+L.ButtonImportProfile		= "Profil Importieren"
+L.ButtonExportProfile		= "Profil Exportieren"
+L.ProfileExportTitle 		= "Dies ist Dein aktuelles Profil im Textformat."
+L.ProfileExportSubtitle 	= "Drücke STRG-C um die Konfiguration in die Zwischenablage zu kopieren."
+L.ProfileImportTitle 		= "Fügen Sie hier ein Profil im Textformat ein."
+L.ProfileImportSubtitle 	= "Drücke STRG-V um den DBM Konfigurationstext einzufügen."
 
 -- Misc
 L.FontType					= "Schriftart"
@@ -400,3 +389,10 @@ L.FontShadow				= "Schatten"
 L.FontSize					= "Schriftgröße: %d"
 
 L.FontHeight	= 16
+
+-- Retail Globals
+L.LARGE = "Groß"
+L.SMALL = "Kleine"
+L.PLAYER_DIFFICULTY6 = "Mythisch" -- ID: 24525
+L.PLAYER_DIFFICULTY_TIMEWALKER = "Zeitwanderung" -- ID: 25846
+L.SPECIALIZATION = "Spezialisierung" -- ID: 22433

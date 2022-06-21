@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Janalai", "DBM-ZulAman")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7007 $"):sub(12, -3))
+mod:SetRevision("20220518110528")
 mod:SetCreatureID(23578)
 
 mod:SetZone()
@@ -23,7 +23,7 @@ local specWarnBreath	= mod:NewSpecialWarningYou(43140, nil, nil, nil, 1, 2)
 local yellFlamebreath	= mod:NewYell(43140)
 
 local timerBomb			= mod:NewCastTimer(12, 42630, nil, nil, nil, 3)--Cast bar?
-local timerAdds			= mod:NewNextTimer(92, 43962, nil, nil, nil, 1, nil, DBM_CORE_L.DAMAGE_ICON)
+local timerAdds			= mod:NewNextTimer(92, 43962, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 

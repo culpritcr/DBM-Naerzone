@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Gluth", "DBM-Naxx", 2)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 2869 $"):sub(12, -3))
+mod:SetRevision("20220518110528")
 mod:SetCreatureID(15932)
 
 mod:RegisterCombat("combat")
@@ -24,7 +24,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_DAMAGE(_, _, _, _, _, _, spellId)
-	if spellId == 28375 or spellId == 54426 and self:AntiSpam(20) then
+	if (spellId == 28375 or spellId == 54426) and self:AntiSpam(20) then
 		warnDecimateNow:Show()
 		timerDecimate:Start()
 		warnDecimateSoon:Schedule(96)

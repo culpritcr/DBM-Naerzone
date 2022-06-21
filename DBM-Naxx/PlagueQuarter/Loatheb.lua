@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Loatheb", "DBM-Naxx", 3)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 2568 $"):sub(12, -3))
+mod:SetRevision("20220518110528")
 mod:SetCreatureID(16011)
 
 mod:RegisterCombat("combat")--Maybe change to a yell later so pull detection works if you chain pull him from tash gauntlet
@@ -21,9 +21,9 @@ local warnDoomNow	= mod:NewSpellAnnounce(29204, 3)
 local warnHealSoon	= mod:NewAnnounce("WarningHealSoon", 4, 48071)
 local warnHealNow	= mod:NewAnnounce("WarningHealNow", 1, 48071, false)
 
-local timerSpore	= mod:NewNextTimer(36, 32329, nil, nil, nil, 5, 42524, DBM_CORE_L.DAMAGE_ICON)
+local timerSpore	= mod:NewNextTimer(36, 32329, nil, nil, nil, 5, 42524, DBM_COMMON_L.DAMAGE_ICON)
 local timerDoom		= mod:NewNextTimer(180, 29204, nil, nil, nil, 2)
-local timerAura		= mod:NewBuffActiveTimer(17, 55593, nil, nil, nil, 5, nil, DBM_CORE_L.HEALER_ICON)
+local timerAura		= mod:NewBuffActiveTimer(17, 55593, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 
 mod:AddBoolOption("SporeDamageAlert", false)
 
@@ -33,13 +33,13 @@ mod.vb.sporeTimer	= 36
 function mod:OnCombatStart(delay)
 	self.vb.doomCounter = 0
 	if self:IsDifficulty("normal25") then
-		self.vb.sporeTimer = 18
+		self.vb.sporeTimer = 15
 	else
 		self.vb.sporeTimer = 36
 	end
 	timerSpore:Start(self.vb.sporeTimer - delay)
 	warnSporeSoon:Schedule(self.vb.sporeTimer - 5 - delay)
-	timerDoom:Start(120 - delay, self.vb.doomCounter + 1)
+	timerDoom:Start(90 - delay, self.vb.doomCounter + 1)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)

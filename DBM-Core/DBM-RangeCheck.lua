@@ -423,7 +423,6 @@ DBM:RegisterMapSize("ZulGurub",				0, 2120.83325195, 1414.5830078) -- Zul'Gurub 
 ---------------
 DBM.RangeCheck = {}
 
-
 --------------
 --  Locals  --
 --------------
@@ -983,7 +982,7 @@ do
 				if select(3, radarFrame.circle:GetVertexColor()) < 0.5 then
 					radarFrame.circle:SetVertexColor(1,1,1)
 				end
-				for i, v in pairs(dots) do
+				for _, v in pairs(dots) do
 					v.dot:Hide()
 				end
 				for i = 1, 8 do
@@ -1067,7 +1066,7 @@ do
 						playerTooClose = true
 					end
 				else
-					for i,v in pairs(dots) do
+					for _, v in pairs(dots) do
 						if v.tooClose then
 							playerTooClose = true
 							break
@@ -1090,7 +1089,7 @@ do
 				-- white frame
 				radarFrame.circle:SetVertexColor(1,1,1)
 				-- hide everything
-				for i, v in pairs(dots) do
+				for _, v in pairs(dots) do
 					v.dot:Hide()
 				end
 				for i = 1, 8 do
@@ -1237,7 +1236,7 @@ local HarmItems = {
 function enemyCheckFunc(uId, range)
 	local items = HarmItems[range]
 	if items then
-		for i, v in ipairs(items) do
+		for _, v in ipairs(items) do
 			if IsItemInRange(v, uId) == 1 then
 				return true
 			elseif IsItemInRange(v, uId) == 0 then
@@ -1255,7 +1254,7 @@ do
 		if UnitIsEnemy("player", uId) then
 			return enemyCheckFunc(uId, 15)
 		else
-			for i, v in ipairs(bandages) do
+			for _, v in ipairs(bandages) do
 				if IsItemInRange(v, uId) == 1 then
 					return true
 				elseif IsItemInRange(v, uId) == 0 then
@@ -1328,11 +1327,47 @@ function rangeCheck:IsShown()
 	return frame and frame:IsShown() or radarFrame and radarFrame:IsShown()
 end
 
+function rangeCheck:IsRadarShown()
+	return radarFrame and radarFrame:IsShown()
+end
+
 -- GetDistance(uId) -- distance between you and the given uId
 -- GetDistance(uId, x, y) -- distance between uId and the coordinates
 -- GetDistance(uId, uId2) -- distance between the two uIds
 function rangeCheck:GetDistance(...)
 	if initRangeCheck() then
 		return getDistanceBetween(...)
+	end
+end
+
+do
+	local function UpdateRangeFrame(r, reverse)
+		if rangeCheck:IsShown() then
+			rangeCheck:Hide(true)
+		else
+			if DBM:HasMapRestrictions() then
+				DBM:AddMsg(L.NO_RANGE)
+			end
+			rangeCheck:Show((r and r < 201) and r or 10--[[, nil, true, nil, reverse]])
+		end
+	end
+	SLASH_DBMRANGE1 = "/range"
+	SLASH_DBMRANGE2 = "/distance"
+	SLASH_DBMRRANGE1 = "/rrange"
+	SLASH_DBMRRANGE2 = "/rdistance"
+	SLASH_DBMBOSSRANGE1 = "/bossrange"
+	SlashCmdList["DBMRANGE"] = function(msg)
+		UpdateRangeFrame(tonumber(msg), false)
+	end
+	SlashCmdList["DBMRRANGE"] = function(msg)
+		UpdateRangeFrame(tonumber(msg), true)
+	end
+	SlashCmdList["DBMBOSSRANGE"] = function(msg)
+		local r = tonumber(msg)
+		if not r then
+			DBM.RangeCheck:DisableBossMode()
+		else
+			DBM.RangeCheck:SetBossRange(r, "target")
+		end
 	end
 end

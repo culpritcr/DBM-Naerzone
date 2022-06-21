@@ -206,6 +206,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
+	Pull			= "침입자는 쓴맛을 보게 될 게다!",
 	YellKill		= "드디어... 드디어 그의 손아귀를... 벗어나는구나."
 })
 
@@ -321,6 +322,7 @@ L:SetMiscLocalization({
 	MobPhase1		= "거대 전차 Mk II",
 	MobPhase2		= "VX-001",
 	MobPhase3		= "공중지휘기",
+	MobPhase4		= "V-07-TR-0N", -- don't localize
 	YellPull		= "시간이 없어, 친구들! 내가 최근에 만든 기막힌 발명품을 시험하게 도와 주겠지? 자, 마음 바꿀 생각은 말라고. XT-002를 그 꼬락서니로 만들었으니, 너흰 나한테 빚진 셈이란 걸 잊지 마!",
 	YellHardPull	= "자폭 절차를 시작합니다.",
 	YellPhase2		= "멋지군! 참으로 경이적인 결과야! 차체 내구도 98.9 퍼센트라! 손상이라고 보기도 어렵지! 계속하자고.",
@@ -391,6 +393,19 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	YellPull	= "짐승의 대장을 칠 때가 곧 다가올 거예요! 놈의 졸개들에게 노여움과 미움을 쏟아부으세요!",
-	Sara		= "사라"
+	YellPull			= "짐승의 대장을 칠 때가 곧 다가올 거예요! 놈의 졸개들에게 노여움과 미움을 쏟아부으세요!",
+	S1TheLucidDream		= "1단계: 깨어 있는 꿈",
+	Sara				= "사라",
+	GuardianofYoggSaron	= "요그사론의 수호병",
+	S2DescentIntoMadness= "2단계: 광기의 내리막길",
+	CrusherTentacle		= "분쇄의 촉수",
+	CorruptorTentacle	= "부패의 촉수",
+	ConstrictorTentacle	= "압착의 촉수",
+	DescentIntoMadness	= "광기의 내리막길",
+	InfluenceTentacle	= "환각의 촉수",
+	LaughingSkull		= "웃는 해골",
+	BrainofYoggSaron	= "요그사론의 뇌",
+	S3TrueFaceofDeath	= "3단계: 죽음의 진정한 얼굴",
+	YoggSaron			= "요그사론",
+	ImmortalGuardian	= "불멸의 수호병"
 })

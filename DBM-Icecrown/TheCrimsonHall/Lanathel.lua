@@ -1,19 +1,19 @@
 local mod	= DBM:NewMod("Lanathel", "DBM-Icecrown", 3)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 4212 $"):sub(12, -3))
+mod:SetRevision("20220518110528")
 mod:SetCreatureID(37955)
 mod:SetModelID("creature/bloodqueen/bloodqueen.m2")
 mod:SetUsedIcons(4, 5, 6, 7, 8)
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED",
-	"SPELL_CAST_SUCCESS",
-	"SPELL_DAMAGE",
-	"SPELL_MISSED",
+mod:RegisterEventsInCombat(
+	"SPELL_AURA_APPLIED 71340 71510 70838 70877 71474 70867 70879 71473 71525 71530 71531 71532 71533 70923 71772",
+	"SPELL_AURA_REMOVED 71340 71510 70838 70877 71474",
+	"SPELL_CAST_SUCCESS 73070",
+	"SPELL_DAMAGE 71726 71727 71728 71729 71277 72638 72639 72640 72637",
+	"SPELL_MISSED 71726 71727 71728 71729 71277 72638 72639 72640 72637",
 	-- "SPELL_PERIODIC_DAMAGE",
 	-- "SPELL_PERIODIC_MISSED",
 	"CHAT_MSG_RAID_BOSS_EMOTE"
@@ -38,7 +38,7 @@ local specWarnPactDarkfallen		= mod:NewSpecialWarningYou(71340, nil, nil, nil, 1
 local specWarnEssenceoftheBloodQueen= mod:NewSpecialWarningYou(70867, nil, nil, nil, 1, 2)
 local specWarnBloodthirst			= mod:NewSpecialWarningYou(70877, nil, nil, nil, 3, 2)
 local yellBloodthirst				= mod:NewYellMe(70877, L.YellFrenzy)
-local specWarnSwarmingShadows		= mod:NewSpecialWarningMove(71266, nil, nil, nil, 1, 2)
+local specWarnSwarmingShadows		= mod:NewSpecialWarningMove(71266, nil, nil, nil, 4, 2)
 local specWarnMindConrolled			= mod:NewSpecialWarningTarget(70923, "-Healer", nil, nil, 1, 2)
 
 local timerNextInciteTerror			= mod:NewNextTimer(100, 73070, nil, nil, nil, 6)
@@ -52,11 +52,11 @@ local timerEssenceoftheBloodQueen	= mod:NewBuffFadesTimer(60, 70867, nil, nil, n
 
 local berserkTimer					= mod:NewBerserkTimer((myRealm == "Lordaeron" or myRealm == "Frostmourne") and 300 or 330)
 
+mod:AddRangeFrameOption("8")
 mod:AddInfoFrameOption(70867, true)
-mod:AddBoolOption("BloodMirrorIcon", false)
-mod:AddBoolOption("SwarmingShadowsIcon", true)
-mod:AddBoolOption("SetIconOnDarkFallen", true)
-mod:AddBoolOption("RangeFrame", true)
+mod:AddSetIconOption("BloodMirrorIcon", 71510, false, false, {7})
+mod:AddSetIconOption("SwarmingShadowsIcon", 71266, true, false, {8})
+mod:AddSetIconOption("SetIconOnDarkFallen", 71340, true, false, {4, 5, 6})
 
 local essence = DBM:GetSpellInfoNew(70867)
 local pactTargets = {}
@@ -106,7 +106,8 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 71340 then		--Pact of the Darkfallen
+	local spellId = args.spellId
+	if spellId == 71340 then		--Pact of the Darkfallen
 		pactTargets[#pactTargets + 1] = args.destName
 		if args:IsPlayer() then
 			specWarnPactDarkfallen:Show()
@@ -156,10 +157,10 @@ function mod:SPELL_AURA_APPLIED(args)
 				warnBloodthirstSoon:Schedule(55)
 			end
 		end
-	elseif args.spellId == 70923 then
+	elseif spellId == 70923 then
 		specWarnMindConrolled:Show(args.destName)
 		specWarnMindConrolled:Play("findmc")
-	elseif args.spellId == 71772 then
+	elseif spellId == 71772 then
 		specWarnBloodBolt:Show()
 		specWarnBloodBolt:Play("scatter")
 		timerBloodBolt:Start()
@@ -167,7 +168,8 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 71340 then				--Pact of the Darkfallen
+	local spellId = args.spellId
+	if spellId == 71340 then				--Pact of the Darkfallen
 		if self.Options.SetIconOnDarkFallen then
 			self:SetIcon(args.destName, 0)		--Clear icon once you got to where you are supposed to be
 		end

@@ -11,7 +11,7 @@ local unpack = unpack
 local floor, fmod, modf = math.floor, math.fmod, math.modf
 local strsplit = strsplit
 local L = DBM_CORE_L
-local LSM = DBM.LSM
+local LSM = LibStub("LibSharedMedia-3.0")
 local GetTime = GetTime
 local GetBattlefieldScore, GetNumBattlefieldScores, GetUnitName, UnitFactionGroup = GetBattlefieldScore, GetNumBattlefieldScores, GetUnitName, UnitFactionGroup
 local function GetBattlefieldFaction(unit) -- workaround to detect faction in Cross-Faction BG
@@ -736,6 +736,7 @@ function TT:FreeTimerTrackerTimer(timer)
 end
 
 function TT:OnEvent(event, ...)
+	if not DBM.Options.PlayTT then return end
 	if event == "START_TIMER" then
 		local timerType, timeSeconds, totalTime  = ...
 		self:CreateTimer(timerType, timeSeconds + 0.1, totalTime + 0.1)

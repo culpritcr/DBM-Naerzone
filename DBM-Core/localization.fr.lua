@@ -87,8 +87,9 @@ L.ALLMOD_DEFAULT_LOADED		= "Les options par défaut pour tous les mods de cette 
 L.ALLMOD_STATS_RESETED		= "Toutes les stats de tous les mods ont été réinitialisés."
 L.MOD_DEFAULT_LOADED			= "Les options par défaut pour ce combat ont été chargés."
 
-L.WORLDBOSS_ENGAGED          = "%s a probablement été engagé sur votre royaume à %s de vie. (Envoyé par %s)"
-L.WORLDBOSS_DEFEATED         = "%s a probablement été tué sur votre royaume (Envoyé par %s)."
+L.WORLDBOSS_ENGAGED		  = "%s a probablement été engagé sur votre royaume à %s de vie. (Envoyé par %s)"
+L.WORLDBOSS_DEFEATED		 = "%s a probablement été tué sur votre royaume (Envoyé par %s)."
+L.WORLDBUFF_STARTED			= "%s a commencé sur votre royaume depuis la faction de %s (Envoyé par %s)."
 
 L.TIMER_FORMAT_SECS			= "%.2f |4seconde:secondes;"
 L.TIMER_FORMAT_MINS			= "%d |4minute:minutes;"
@@ -134,7 +135,7 @@ L.VERSIONCHECK_HEADER		= "Deadly Boss Mods - Versions"
 L.VERSIONCHECK_ENTRY			= "%s: %s (%s)"
 L.VERSIONCHECK_ENTRY_TWO		= "%s: %s (%s) & %s (%s)"--Two Boss mods
 L.VERSIONCHECK_ENTRY_NO_DBM	= "%s: DBM non installé"--Two Boss mods
-L.VERSIONCHECK_FOOTER		= "%d joueurs trouvés avec Deadly Boss Mods"
+L.VERSIONCHECK_FOOTER		= "%d joueurs trouvés avec Deadly Boss Mods & %d joueurs avec BigWigs"
 L.VERSIONCHECK_OUTDATED		= "Les joueurs suivants %d ont une version périmée du bossmod: %s"
 L.YOUR_VERSION_OUTDATED      = "Votre version de Deadly Boss Mods est périmée. Veuillez vous rendre sur ".. L.UPDATEREMINDER_URL .." pour obtenir la dernière version."
 L.VOICE_PACK_OUTDATED		= "Il semble que votre pack de voix DBM manquent de sons supportés sur cette version de DBM. Certains sons d'alertes spéciales ne seront pas joués s'ils utilisent des voix non supportées par votre version. Téléchargez une nouvelle version du pack devoix ou contactez l'auteur pour une mise à jour qui la contient."
@@ -215,20 +216,6 @@ L.TIMER_USAGE	= {
 
 L.ERROR_NO_PERMISSION				= "Vous n'avez pas la permission requise pour faire cela."
 
---Common Locals
-L.UNKNOWN					= "inconnu"
-L.LEFT						= "Gauche"
-L.RIGHT						= "Droite"
-L.BACK						= "Derrière"
-L.MIDDLE					= "Milieu"
-L.FRONT						= "Devant"--"En face"?/In front
-L.INTERMISSION				= "Intermission"--No blizz global for this, and will probably be used in most end tier fights with intermission phases
---Common Locals end
-
---Retail Globals
-L.RAID_INFO_WORLD_BOSS 		= "Boss hors instance"
---Retail Globals end
-
 L.BREAK_USAGE				= "Les timers de pause ne peuvent pas durer plus de 60 minutes. Assurez vous de mettre le temps en minutes et pas secondes."
 L.BREAK_START				= "La pause commence maintenant -- vous avez %s minute(s)!"
 L.BREAK_MIN					= "Fin de la pause dans %s minute(s) !"
@@ -253,7 +240,7 @@ L.AUTO_ANNOUNCE_TEXTS.spell		= "%s"
 L.AUTO_ANNOUNCE_TEXTS.ends		= "%s s'est terminé"
 L.AUTO_ANNOUNCE_TEXTS.endtarget	= "%s s'est terminé: >%%s<"
 L.AUTO_ANNOUNCE_TEXTS.fades		= "%s s'est dissipé"
-L.AUTO_ANNOUNCE_TEXTS.adds		= "%s restant: %%d"
+L.AUTO_ANNOUNCE_TEXTS.addsleft		= "%s restant: %%d"
 L.AUTO_ANNOUNCE_TEXTS.cast		= "Incantation %s: %.1f sec"
 L.AUTO_ANNOUNCE_TEXTS.soon		= "%s imminent"
 L.AUTO_ANNOUNCE_TEXTS.prewarna	= "%s de %s"
@@ -269,7 +256,7 @@ L.AUTO_ANNOUNCE_OPTIONS.spell		= "Alerte concernant $spell:%s"
 L.AUTO_ANNOUNCE_OPTIONS.ends        = "Affiche une alerte lorsque $spell:%s se termine"
 L.AUTO_ANNOUNCE_OPTIONS.endtarget   = "Affiche une alerte lorsque $spell:%s se termine"
 L.AUTO_ANNOUNCE_OPTIONS.fades       = "Affiche une alerte lorsque $spell:%s se dissipe"
-L.AUTO_ANNOUNCE_OPTIONS.adds		= "Alerte indiquant le nombre restant de : $spell:%s"
+L.AUTO_ANNOUNCE_OPTIONS.addsleft		= "Alerte indiquant le nombre restant de : $spell:%s"
 L.AUTO_ANNOUNCE_OPTIONS.cast		= "Alerte lorsque $spell:%s est incanté"
 L.AUTO_ANNOUNCE_OPTIONS.soon		= prewarnOption
 L.AUTO_ANNOUNCE_OPTIONS.prewarn		= prewarnOption
@@ -356,21 +343,22 @@ L.AUTO_TIMER_OPTIONS.active		= "Durée d'activité de $spell:%s (%ds)"
 L.AUTO_TIMER_OPTIONS.fades		= "Délai avant la dissipation de $spell:%s (%ds)"
 L.AUTO_TIMER_OPTIONS.ai			= "Afficher le timer IA pour le cooldown de $spell:%s (%ds)"
 L.AUTO_TIMER_OPTIONS.cd			= "Durée de recharge de $spell:%s (%ds)"
-L.AUTO_TIMER_OPTIONS.cdcount		= "Durée de recharge de $spell:%s (%ds)"
+L.AUTO_TIMER_OPTIONS.cdcount	= "Durée de recharge de $spell:%s (%ds)"
 L.AUTO_TIMER_OPTIONS.cdsource	= "Durée de recharge de $spell:%s (%ds)"
 L.AUTO_TIMER_OPTIONS.cdspecial	= "Afficher le timer pour le cooldown d'abilité spéciale (%ds)"
 L.AUTO_TIMER_OPTIONS.next		= "Délai avant le prochain $spell:%s (%ds)"
 L.AUTO_TIMER_OPTIONS.nextcount	= "Délai avant le prochain $spell:%s (%ds)"
 L.AUTO_TIMER_OPTIONS.nextsource	= "Délai avant le prochain $spell:%s (%ds)"
-L.AUTO_TIMER_OPTIONS.nextspecial	= "Afficher le timer de l'abilité spéciale suivante (%ds)"
-L.AUTO_TIMER_OPTIONS.achievement	= "Délai pour réussir %s (%ds)"
+L.AUTO_TIMER_OPTIONS.nextspecial= "Afficher le timer de l'abilité spéciale suivante (%ds)"
+L.AUTO_TIMER_OPTIONS.achievement= "Délai pour réussir %s (%ds)"
 L.AUTO_TIMER_OPTIONS.stage		= "Afficher le timer de la phase suivante (%ds)"
 L.AUTO_TIMER_OPTIONS.roleplay	= "Afficher le timer de la durée du roleplay (%ds)"--This does need localizing though.
 
-L.AUTO_ICONS_OPTION_TEXT			= "Placer des icônes sur les cibles de $spell:%s"
-L.AUTO_ICONS_OPTION_TEXT2        = "Placer des icônes sur $spell:%s"
-L.AUTO_ARROW_OPTION_TEXT         = "Afficher la flèche DBM en direction de la cible affectée par $spell:%s"
-L.AUTO_ARROW_OPTION_TEXT2        = "Afficher la flèche DBM pour s'éloigner de la cible affectée par $spell:%s"
+L.AUTO_ICONS_OPTION_TARGETS		= "Placer des icônes sur les cibles de $spell:%s"
+L.AUTO_ICONS_OPTION_NPCS		= "Placer des icônes sur $spell:%s"
+L.AUTO_ICONS_OPTION_CONFLICT	= " (Peut entrer en conflit avec d'autres options)"
+L.AUTO_ARROW_OPTION_TEXT		= "Afficher la flèche DBM en direction de la cible affectée par $spell:%s"
+L.AUTO_ARROW_OPTION_TEXT2		= "Afficher la flèche DBM pour s'éloigner de la cible affectée par $spell:%s"
 L.AUTO_ARROW_OPTION_TEXT3		= "Show DBM Arrow to move toward specific location for $spell:%s"
 
 L.AUTO_YELL_OPTION_TEXT.yell		= "Crie quand vous êtes affecté par $spell:%s"
@@ -385,11 +373,11 @@ L.AUTO_YELL_ANNOUNCE_TEXT.position 	= "%s %%s sur {rt%%d}"..UnitName("player")..
 
 L.AUTO_HUD_OPTION_TEXT			= "Afficher la map HUD pour $spell:%s"
 L.AUTO_HUD_OPTION_TEXT_MULTI		= "Afficher la map HUD pour diverses activités"
-L.AUTO_RANGE_OPTION_TEXT         = "Afficher la fênetre des distances (%s) pour $spell:%s"--string used for range so we can use things like "5/2" as a value for that field
-L.AUTO_RANGE_OPTION_TEXT_SHORT   = "Afficher la fênetre des distances (%s)"--For when a range frame is just used for more than one thing
+L.AUTO_RANGE_OPTION_TEXT		= "Afficher la fênetre des distances (%s) pour $spell:%s"--string used for range so we can use things like "5/2" as a value for that field
+L.AUTO_RANGE_OPTION_TEXT_SHORT	= "Afficher la fênetre des distances (%s)"--For when a range frame is just used for more than one thing
 L.AUTO_RRANGE_OPTION_TEXT		= "Afficher la fênetre des distances inversée (%s) pour $spell:%s"--Reverse range frame (green when players in range, red when not)
 L.AUTO_RRANGE_OPTION_TEXT_SHORT	= "Afficher la fênetre des distances inversée (%s)"
-L.AUTO_INFO_FRAME_OPTION_TEXT    = "Afficher la fênetre d'information pour $spell:%s" --What frame is this?
+L.AUTO_INFO_FRAME_OPTION_TEXT	= "Afficher la fênetre d'information pour $spell:%s" --What frame is this?
 L.AUTO_READY_CHECK_OPTION_TEXT   = "Jouer le son du ready check lorsque le boss est engagé (même si ce dernier n'est pas la cible)"
 
 --Sounds
@@ -425,11 +413,11 @@ L.ARROW_MOVABLE					= "Flèche mobile"
 L.ARROW_ERROR_USAGE	= {
 	"Utilisation de DBM-Arrow:",
 	"-----------------",
-	"/dbm arrow <x> <y>:  crée une flèche qui pointe vers une position spécifique (0 < x/y < 100)",
+	"/dbm arrow <x> <y>: crée une flèche qui pointe vers une position spécifique (0 < x/y < 100)",
 	"/dbm arrow map <x> <y>: Crée une flèche qui pointe vers une position spécifique (en utilisant les coordonnées sur la carte)",
-	"/dbm arrow <player>:  Crée une flèche qui pointe vers un joueur spécifique de votre groupe ou raid",
-	"/dbm arrow hide:  Masque la flèche",
-	"/dbm arrow move:  Rend la flèche mobile"
+	"/dbm arrow <player>: Crée une flèche qui pointe vers un joueur spécifique de votre groupe ou raid",
+	"/dbm arrow hide: Masque la flèche",
+	"/dbm arrow move: Rend la flèche mobile"
 }
 
 L.SPEED_KILL_TIMER_TEXT	= "Record à battre"
@@ -437,10 +425,25 @@ L.SPEED_CLEAR_TIMER_TEXT  = "Meilleur clean"
 L.COMBAT_RES_TIMER_TEXT	= "Prochaine charge de rez en combat"
 L.TIMER_RESPAWN		= "%s Réapparition"
 
-L.LAG_CHECKING               = "Vérification de la latence du raid..."
-L.LAG_HEADER                 = "Deadly Boss Mods - Résultats sur la latence"
-L.LAG_ENTRY                  = "%s: délai monde [%d ms] / délai domicile [%d ms]"
-L.LAG_FOOTER                 = "Pas de réponse: %s"
+L.LAG_CHECKING			   = "Vérification de la latence du raid..."
+L.LAG_HEADER				 = "Deadly Boss Mods - Résultats sur la latence"
+L.LAG_ENTRY				  = "%s: délai monde [%d ms] / délai domicile [%d ms]"
+L.LAG_FOOTER				 = "Pas de réponse: %s"
 
 --LDB
 L.SILENTMODE_IS		= "Le mode silencieux est "
+
+L.WORLD_BUFFS.hordeOny		= "Peuple de la Horde, citoyens d’Orgrimmar, venez, rassemblez-vous et célébrez un héros de la Horde"
+L.WORLD_BUFFS.allianceOny	= "Citoyens et alliés de Stormwind, ce jour est historique."
+L.WORLD_BUFFS.hordeNef		= "NEFARIAN A ÉTÉ TUÉ ! Peuple d'Orgrimmar"
+L.WORLD_BUFFS.allianceNef	= "Citoyens de l'Alliance, le seigneur du clan Blackrock a été tué !"
+L.WORLD_BUFFS.zgHeart		= "Il ne reste plus qu'une étape avant que prenne fin la menace de l'Écorcheur d'âmes"
+L.WORLD_BUFFS.zgHeartBooty	= "Le Dieu sanglant, l'Écorcheur d'âmes, a été vaincu ! Nous ne sommes plus menacés !"
+L.WORLD_BUFFS.zgHeartYojamba	= "Commencez le rituel, mes serviteurs. Nous devons renvoyer le cœur d'Hakkar dans le vide !"
+L.WORLD_BUFFS.rendHead		= "Le faux chef Rend Blackhand est tombé !"
+
+--Retail Globals
+L.RAID_INFO_WORLD_BOSS		= "Boss hors instance"
+L.SCENARIO_STAGE			= "Phase %d"
+-- EJ
+L.HARD_MODE					= "Mode difficile" -- 17220

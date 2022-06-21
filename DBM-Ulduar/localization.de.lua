@@ -207,6 +207,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
+	Pull		= "Für Euer Eindringen werdet Ihr bezahlen!",
 	YellKill	= "Ich... bin von ihm befreit... endlich."
 })
 
@@ -322,6 +323,7 @@ L:SetMiscLocalization({
 	MobPhase1		= "Leviathan Mk II",
 	MobPhase2		= "VX-001",
 	MobPhase3		= "Luftkommandoeinheit",
+	MobPhase4		= "V-07-TR-0N", -- don't localize
 	YellPull		= "Wir haben nicht viel Zeit, Freunde! Ihr werdet mir dabei helfen, meine neueste und großartigste Kreation zu testen. Bevor Ihr nun Eure Meinung ändert, denkt daran, dass Ihr mir etwas schuldig seid, nach dem Unfug, den Ihr mit dem XT-002 angestellt habt.",
 	YellHardPull	= "Selbstzerstörungssequenz eingeleitet.",
 	YellPhase2		= "WUNDERBAR! Das sind Ergebnisse nach meinem Geschmack! Integrität der Hülle bei 98,9 Prozent! So gut wie keine Dellen! Und weiter geht's.",
@@ -393,5 +395,18 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	YellPull 			= "Bald ist die Zeit gekommen, dem Untier den Kopf abzuschlagen! Konzentriert Euren Zorn und Euren Hass auf seine Diener!",
-	Sara 				= "Sara"
+	S1TheLucidDream		= "Phase 1: Der strahlende Traum",
+	Sara 				= "Sara",
+	GuardianofYoggSaron	= "Wächter des Yogg-Saron",
+	S2DescentIntoMadness= "Phase 2: Abstieg in den Wahnsinn",
+	CrusherTentacle		= "Schmettertentakel",
+	CorruptorTentacle	= "Verderbertentakel",
+	ConstrictorTentacle	= "Würgetentakel",
+	DescentIntoMadness	= "Abstieg in den Wahnsinn",
+	InfluenceTentacle	= "Einflusstentakel",
+	LaughingSkull		= "Lachender Schädel",
+	BrainofYoggSaron	= "Yogg-Sarons Gehirn",
+	S3TrueFaceofDeath	= "Phase 3: Das wahre Antlitz des Todes",
+	YoggSaron			= "Yogg-Saron",
+	ImmortalGuardian	= "Unvergängliche Wache"
 })

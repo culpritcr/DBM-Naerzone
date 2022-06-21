@@ -219,6 +219,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
+	Pull			= "Vous allez souffrir pour cette intrusion !",
 	YellKill		= "Je suis... libéré de son emprise... enfin.",
 })
 
@@ -334,6 +335,7 @@ L:SetMiscLocalization({
 	MobPhase1		= "Léviathan Mod. II",
 	MobPhase2		= "VX-001",
 	MobPhase3		= "Unité de commandement aérien",
+	MobPhase4		= "V-07-TR-0N", -- don't localize
 	YellPull		= "Nous n'avons pas beaucoup de temps, les amis ! Vous allez m'aider à tester ma dernière création en date, la plus grande de toutes. Avant de changer d'avis, n'oubliez pas que que vous me devez bien ça après m'avoir complètement déglingué le XT-002.",
 	YellHardPull	= "Initialisation de la séquence d'autodestruction.",
 	YellPhase2		= "MERVEILLEUX ! Résultats parfaitement formidables !",
@@ -405,6 +407,19 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	YellPull1	= "Il sera bientôt temps de frapper la tête de la bête ! Concentrez votre rage et votre haine sur ses laquais !",
-	Sara		= "Sara"
+	YellPull1			= "Il sera bientôt temps de frapper la tête de la bête ! Concentrez votre rage et votre haine sur ses laquais !",
+	S1TheLucidDream		= "Phase 1 : Le rêve lucide",
+	Sara 				= "Sara",
+	GuardianofYoggSaron	= "Gardien de Yogg-Saron",
+	S2DescentIntoMadness= "Phase 2 : La Descente dans la folie",
+	CrusherTentacle		= "Tentacule écraseur",
+	CorruptorTentacle	= "Tentacule corrupteur",
+	ConstrictorTentacle	= "Tentacule constricteur",
+	DescentIntoMadness	= "Descente dans la folie",
+	InfluenceTentacle	= "Tentacule d’influence",
+	LaughingSkull		= "Crâne-Ricanant",
+	BrainofYoggSaron	= "Cerveau de Yogg-Saron",
+	S3TrueFaceofDeath	= "Phase 3 : le vrai visage de la mort",
+	YoggSaron			= "Yogg-Saron",
+	ImmortalGuardian	= "Gardien immortel"
 })

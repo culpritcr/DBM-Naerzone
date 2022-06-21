@@ -210,6 +210,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
+	Pull		= "¡Sufriréis por esta intromisión!",
+--	Pull		= "¡Sufrirás por esta ofensa!" -- esMX
 	YellKill	= "Estoy... estoy libre de sus garras... al fin."
 })
 
@@ -327,6 +329,7 @@ L:SetMiscLocalization({
 	MobPhase1		= "Mk II de leviatán",
 	MobPhase2		= "VX-001",
 	MobPhase3		= "Unidad de mando aérea",
+	MobPhase4		= "V-07-TR-0N", -- don't localize nor change it to V-07-TR-ON for esMX (typo)
 	YellPull		= "¡No tenemos mucho tiempo, amigos! Vais a ayudarme a probar mi última y mayor creación. Ahora, antes de que cambiéis de parecer, recordad que en cierta forma, me lo debéis después del desastre que causasteis con el XA-002.",
 	YellHardPull	= "Secuencia de autodestrucción iniciada.", -- esES
 --	YellHardPull	= "Fase de autodestrucción iniciada." -- esMX
@@ -399,6 +402,19 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	YellPull	= "¡Pronto llegará la hora de golpear la cabeza del monstruo! ¡Centrad vuestra ira y odio en sus esbirros!",
-	Sara		= "Sara"
+	YellPull			= "¡Pronto llegará la hora de golpear la cabeza del monstruo! ¡Centrad vuestra ira y odio en sus esbirros!",
+	S1TheLucidDream		= "Fase 1: El sueño lúcido",
+	Sara				= "Sara",
+	GuardianofYoggSaron	= "Guardián de Yogg-Saron",
+	S2DescentIntoMadness= "Fase 2: El Descenso a la Locura",
+	CrusherTentacle		= "Tentáculo triturador",
+	CorruptorTentacle	= "Tentáculo corruptor",
+	ConstrictorTentacle	= "Tentáculo constrictor",
+	DescentIntoMadness	= "El Descenso a la Locura",
+	InfluenceTentacle	= "Tentáculo cimbreante",
+	LaughingSkull		= "Calavera jocosa",
+	BrainofYoggSaron	= "Cerebro de Yogg-Saron",
+	S3TrueFaceofDeath	= "Fase 3: El auténtico rostro de la muerte",
+	YoggSaron			= "Yogg-Saron",
+	ImmortalGuardian	= "Guardián inmortal"
 })

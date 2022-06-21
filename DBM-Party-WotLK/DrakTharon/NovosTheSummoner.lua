@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("NovosTheSummoner", "DBM-Party-WotLK", 4)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 3635 $"):sub(12, -3))
+mod:SetRevision("20220518110528")
 mod:SetCreatureID(26631)
 
 mod:RegisterCombat("yell", L.YellPull)
@@ -21,7 +21,7 @@ local warnCurseTarget			= mod:NewTargetAnnounce(59856)
 local specwarnCurse				= mod:NewSpecialWarningDispel(59856, "RemoveCurse")
 local specwarnSnow				= mod:NewSpecialWarningMove(59854)
 
-local timerCrystalHandler 		= mod:NewTimer(20, "timerCrystalHandler", 59910, nil, nil, 1, DBM_CORE_L.DAMAGE_ICON)
+local timerCrystalHandler 		= mod:NewTimer(20, "timerCrystalHandler", 59910, nil, nil, 1, DBM_COMMON_L.DAMAGE_ICON)
 local timerNextCurse			= mod:NewCDTimer(20, 59856)
 
 mod.vb.CrystalHandlers = 4

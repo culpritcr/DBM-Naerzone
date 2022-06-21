@@ -207,6 +207,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
+	Pull				= "你要为你的罪行受到惩罚！",
 	YellKill			= "我……我终于从他的魔掌中……解脱了。"
 })
 
@@ -322,6 +323,7 @@ L:SetMiscLocalization({
 	MobPhase1			= "巨兽二型",
 	MobPhase2			= "VX-001",
 	MobPhase3			= "空中指挥单位",
+	MobPhase4			= "V-07-TR-0N", -- don't localize
 	YellPull			= "我们时间不多了，朋友们！来帮忙测试一下我所发明的最新型、最强大的机体吧。在你们改变主意之前，请允许我提醒一下，你们把XT-002搞得一团糟，应该算是欠我个人情吧。",
 	YellHardPull		= "自毁程序已经启动。",
 	YellPhase2			= "太棒了！测试结果非常好！外壳完整率百分之九十八点九！几乎没有划伤！继续。",
@@ -392,6 +394,19 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	YellPull	= "攻击这头野兽要害的时刻即将来临！将你们的愤怒和仇恨倾泻到它的爪牙身上！",
-	Sara		= "萨拉"
+	YellPull			= "攻击这头野兽要害的时刻即将来临！将你们的愤怒和仇恨倾泻到它的爪牙身上！",
+	S1TheLucidDream		= "第一阶段：清醒的梦境",
+	Sara				= "萨拉",
+	GuardianofYoggSaron	= "尤格-萨隆的卫士",
+	S2DescentIntoMadness= "第二阶段：坠入疯狂",
+	CrusherTentacle		= "重压触须",
+	CorruptorTentacle	= "腐蚀触须",
+	ConstrictorTentacle	= "缠绕触须",
+	DescentIntoMadness	= "疯狂阶梯",
+	InfluenceTentacle	= "感应触须",
+	LaughingSkull		= "嘲笑之颅",
+	BrainofYoggSaron	= "尤格-萨隆的大脑",
+	S3TrueFaceofDeath	= "第三阶段：死亡的真正面貌",
+	YoggSaron			= "尤格-萨隆",
+	ImmortalGuardian	= "不朽守护者"
 })
